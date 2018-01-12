@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.CheckBox?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sbt.controller.QuizViewController">
+   <children>
+      <GridPane layoutX="12.0" layoutY="100.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="5.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="-Infinity" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="question" alignment="TOP_LEFT"  text="Label" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Group GridPane.rowIndex="1">
+               <children>
+                  <VBox spacing="20.0">
+                     <children>
+                        <Label fx:id="answersCount" alignment="CENTER"  text="answersCount" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="check" alignment="CENTER"  text="check" wrapText="true">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="rbA" mnemonicParsing="false" onAction="#rbClicked" text="RadioButton" wrapText="true" />
+                        <RadioButton fx:id="rbB" mnemonicParsing="false" onAction="#rbClicked" text="RadioButton" wrapText="true" />
+                        <RadioButton fx:id="rbC" mnemonicParsing="false" onAction="#rbClicked" text="RadioButton" wrapText="true" />
+                        <RadioButton fx:id="rbD" mnemonicParsing="false" onAction="#rbClicked" text="RadioButton" wrapText="true" />
+                        <RadioButton fx:id="rbE" mnemonicParsing="false" onAction="#rbClicked" text="RadioButton" wrapText="true" />
+                        <RadioButton fx:id="rbF" mnemonicParsing="false" onAction="#rbClicked" text="RadioButton" wrapText="true" />
+                        <RadioButton fx:id="rbG" mnemonicParsing="false" onAction="#rbClicked" text="RadioButton" wrapText="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </Group>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.rowIndex="2">
+              <buttons>
+                 <Button fx:id="bHelp" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#bHelp" prefWidth="100.0" text="Help" textAlignment="CENTER" />
+                 <Button fx:id="bCheck" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#bCheck" prefWidth="100.0" text="Check" textAlignment="CENTER" />
+                  <Button fx:id="bNext" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#bNext" prefWidth="100.0" text="Next" textAlignment="CENTER" />
+              </buttons>
+               <padding>
+                  <Insets left="170.0" right="180.0" />
+               </padding>
+            </ButtonBar>
+            <ProgressBar fx:id="pB" accessibleHelp="Progress" maxHeight="10.0" minHeight="10.0" mouseTransparent="true" pickOnBounds="false" prefHeight="10.0" prefWidth="10000" progress="0.0" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
