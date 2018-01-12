@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="360.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sbt.controller.MainController">
+    <children>
+        <Label fx:id="lblHello" layoutX="90.0" layoutY="14.0" text="Разделы">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Button fx:id="btn1" layoutX="20.0" layoutY="50.0" mnemonicParsing="false" onAction="#btn1"
+                text="Системная библиотека" minWidth="200"/>
+        <Button fx:id="btn2" layoutX="20.0" layoutY="80.0" mnemonicParsing="false" onAction="#btn2"
+                text="Коллекции" minWidth="200"/>
+        <Button fx:id="btn3" layoutX="20.0" layoutY="110.0" mnemonicParsing="false" onAction="#btn3"
+                text="OO concepts" minWidth="200"/>
+        <Button fx:id="btn4" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#btn4"
+                text="Примитивные типы и операторы" minWidth="200"/>
+        <Button fx:id="btn5" layoutX="20.0" layoutY="170.0" mnemonicParsing="false" onAction="#btn5"
+                text="Declaration and Scoping" minWidth="200"/>
+        <Button fx:id="btn6" layoutX="20.0" layoutY="200.0" mnemonicParsing="false" onAction="#btn6"
+                text="Виртуальная машина Java" minWidth="200"/>
+        <Button fx:id="btn7" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" onAction="#btn7"
+                text="Generics" minWidth="200"/>
+        <Button fx:id="btn8" layoutX="20.0" layoutY="260.0" mnemonicParsing="false" onAction="#btn8"
+                text="Многопоточность" minWidth="200"/>
+        <Button fx:id="btn9" layoutX="20.0" layoutY="290.0" mnemonicParsing="false" onAction="#btn9"
+                text="Исключения" minWidth="200"/>
+        <Button fx:id="btn10" layoutX="20.0" layoutY="320.0" mnemonicParsing="false" onAction="#btn10"
+                text="Сериализация" minWidth="200"/>
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,1703 @@
+Системная библиотека
+Вопрос № 1
+<
+Какие требования предъявляются к методу equals:
+>
+x	Для любых не null x – x.equals(null) возвращает false
+x	Для любых x и y не равных null, если x.equals(у) возвращает true, то x.hashCode() равен y.hashCode()
+	Если x.hashCode() и y.hashCode() равны, то x.equals(у) должно быть true
+x	Для любых не null x – x.equals(x) возвращает true
+	Если x равно null - x.equals(null) возвращает true
+!рефлексивность x.equals(x)=true
+симметричность x.equals(y)=true, y.equals(x)=true
+транзитивность x.equals(z)=true, y.equals(z)=true, x.equals(y)=true 
+непротиворечивость x.equals(x)=true постоянно
+x.equals(null)=false
+Вопрос № 2
+<
+Для чего используется класс Class?
+>
+x	Для создания объектов данного класса
+x	Для получения списка аннотаций у данного класса
+	Для управления памятью, выделяемой для объекта данного класса
+x	Для получения полей и методов класса
+	Для динамической загрузки классов во время выполнения
+
+Вопрос № 3
+<
+В каких случаях нужно использовать аннотацию @Override?
+>
+	Обязательно при перегрузке метода
+	Всегда при переопределении класса
+	Всегда при переопределении метода
+x	Желательно при переопределении метода
+	Желательно при переопределенни класса
+	Желательно при перегрузке метода
+!@Overide не является обязательной
+Вопрос № 4
+<
+Как определить собственную аннотацию MyAnnotation? Укажите корректный синтаксис.
+>
+	public interface MyAnnotation
+	public class MyAnnotation extends Annotation
+	public interface @MyAnnotation
+	Это невозможно, поддерживаются только встроенные аннотации
+x	public @interface MyAnnotation
+
+Вопрос № 5
+<
+Какие требования предъявляются к методу hashCode()?
+>
+	При вычислении значения обязательно должно использоваться значение, возвращаемое методом super.hashCode(), кроме объектов класса Object.
+	Если hashCode() для двух объектов вернул одинаковое значение, то метод equals() должен возвращать true
+x	hashCode() должна гарантировать, что значения, возвращаемые ею для разных объектов, не совпадают
+x	Многократные вызовы hashCode() у одного и того же объекта возвращают одно и то же значение
+!для одного и того-же объекта, хеш-код всегда будет одинаковым;
+если объекты одинаковые, то и хеш-коды одинаковые
+если хеш-коды равны, то входные объекты не всегда равны (коллизия)
+
+Вопрос № 6
+<
+Каковы правила контракта между hashCode() и equals()?
+>
+	Если два объекта возвращают одинаковое значение hashCode(), значит они равны
+x	Если два объекта возвращают разные значения hashCode(), то они не могут быть равны
+x	Если два объекта равны, они должны возвращать одинаковое значение hashCode()
+	Если два объекта не равны, то и hashCode() у них обязательно отличаеться
+
+Вопрос № 7
+<
+Что лучше использовать в данном фрагменте вместо оператора “+” для соединения строк?
+public String m(String… a){
+String result = “”;
+for (String e: a){
+result = result + e;
+}
+return result;
+}
+>
+	Лучше использовать “+”. Все остальные способы хуже.
+	Метод concat()
+	StringBuffer
+x	StringBuilder
+
+Вопрос № 8
+<
+Что выведет такая программа:
+String s1 = new String(“hello”);
+String s2 = new String(“hello”);
+String s3 = “hello”;
+String s4 = “hello”;
+System.out.println(s1==s2);
+System.out.println(s1==s3);
+System.out.println(s3==s4);
+>
+	false false false
+	true true true
+x	false flase true
+	true false true
+
+Вопрос № 9
+<
+Пусть мы хотим определить аннотацию MyAnnotation с параметром, например @MyAnnotation(“this is my value”). Укажите корректный синтаксис для описания такого поля в аннотации.
+>
+	String value;
+	String name();
+	String getValue();
+x	String value();
+	String setValue();
+
+Вопрос № 10
+<
+Пусть есть класс, описывающий человека:
+
+public class Person{
+//дата рождения
+private Date dateOfBirth;
+
+//возраст
+private int age;
+//полное имя
+private String fullName;
+
+//компания в которой человек работает
+private String workInCompany;
+}
+Какие поля следует включить в вычисления hashCode() и equals()?
+>
+x	dateOfBirth
+	workInCompany
+	age
+x	fullName
+
+Вопрос № 11
+<
+Что напечатает программа?
+String a = new String("abc");
+String b = new String(a).intern();
+System.out.println(a == b);
+>
+	Не скомпилируется
+	true
+x	false
+	Произойдет исключение
+!a и b находятся в разных блоках памяти
+ 
+Коллекции
+
+Вопрос № 1
+<
+Какова эффективность поиска объекта в HashMap по ключу?
+>
+	O(log n)
+x	O(1)
+	O(n^2)
+	O(n)
+!Поиск по Hash.. за O(1), 
+Вопрос № 2
+<
+Что произойдет, если hashCode ключа поменяется после добавления в HashMap?
+>
+-	Ключ и соответствующее ему значение будут удалены из HashMap
+-	Никаких проблем не появится. Метод get() будет продолжать находить этот ключ.
+x	Метод get() будет возвращать null для этого ключа
+-	Будет выброшено исключение ConcurrentModificationException
+!Get будет возвращать null, но объект будет храниться в HashMap
+Вопрос № 3
+<
+Укажите, какие методы надо переопределить в классе Element для корректной работы
+Set<Element> set = new TreeSet<>()?
+>
+-	hashCode()
+-	equals()
+x	никакие
+-	toString()
+x	compareTo()
+!Для корректного сравнения необходимо реализовать интерфейс Comparable иди Comparator
+Вопрос № 4
+<
+Укажите, какие методы надо переопределить в классе Element, для корректной работы множества
+Set<Element>являются потокобезопасными: set = new HashSet<>()?
+>
+-	toString()
+-	никакие
+x	hashCode()
+x	equals()
+-	compareTo()
+!Все что связано c Hash.. необходимо переопределять методы equals и hashcode
+
+Вопрос № 5
+<
+Пусть есть такой код:
+public class Test {
+static List<Integer> a = Arrays.asList(1,2,3,4,5);
+public static void main(String args[]) {
+for (int i=0;i<a.size();i++) {
+if (a.get(i)>1) a.remove(i);
+}
+System.out.println(a);
+}
+}
+Корректен ли такой код, удаляющий из коллекции все элементы, большие 1? 
+>
+-	Ошибок не будет, в результате выполнения в коллекции останется 1 элемент
+-	Ошибок не будет, в результате выполнения в коллекции останется 2 элемента
+-	Нет, будет ошибка во время компиляции
+x	Нет, будет ошибка во время выполнения
+!Возникнет ошибка UnsupportedOperationException, так как Arrays.asList(..)  создает неизменяемый List
+-----Вопрос № 6
+<
+Может ли TreeSet содержать null?
+>
+-	Да
+-	Нет
+-	Да, если при создании задан comparator, который умеет обрабатывать null
+-	Да, но только при создании его из коллекции, в которой null уже присутствовал (конструктором TreeSet(Collection<? extends E> c))
+
+Вопрос № 7
+<
+Что выведет программа?
+List<Integer> list = new ArrayList<Integer>(Arrays.asList(new Integer[] { 7, -3, 15, 2, -19 }));
+int x = 2;
+int y = Collections.binarySearch(list, x);
+System.out.println(y);
+>
+-	Выбросит исключение IndexOutOfBoundsException
+-	3
+-	Не скомпилируется
+x	Результат не определен
+-	2
+!Лист не отсортирован, результат неопределен
+Вопрос № 8
+<
+Какова эффективность поиска объектов в TreeMap по ключу?
+>
+-	O(n^2)
+-	O(1)
+x	O(log n)
+-	O(n)
+
+
+
+Вопрос № 9
+<
+Какую структуру данных лучше использовать если необходимо, чтобы элементы были уникальными и были отсортированы?
+>
+-	HashSet
+-	TreeMap
+x	TreeSet
+-	LinkedHashSet
+!Уникальность обеспечивает Set, LinkedHashSet – запоминает порядок вставки
+
+----Вопрос № 10
+<
+Для чего нужно переопределять hashCode()?
+>
+x	Для поиска объекта в HashSet
+-	Для поиска объекта в TreeMap
+-	Для поиска объекта в TreeSet
+x	Для поиска объекта в HashMap
+-	Для хеширования объектов в целях последующего хранения в базе данных
+-	Для более еффективной работы метода equals
+
+----Вопрос № 11
+<
+Как увеличиться внутрення емкость HashMap при достижении заданного уровня заполненности?
+>
+-	в 4 раза
+-	на 10
+-	в 2 раза
+-	на 100
+
+
+Вопрос № 12
+<
+Что можно вставить вместо //(1), чтобы программа скомпилировалась и выполнилась без ошибок:
+public class C{
+public void size(List<?> l){
+System.out.println(l.size());
+}
+
+public static void main(String[] args){
+C c = new C();
+//(1)
+c.size(list);
+}
+}
+>
+-	List<?> list = new LinkedList<?>();
+x	Vector<? extends Throwable> list = new Vector<Exception>();
+-	Set<String> list = new TreeSet<String>();
+x	List<?> list = new LinkedList<String>();
+
+
+
+
+ 
+OO concepts
+
+Вопрос № 1
+<
+Может ли enum имплементировать интерфейс?
+>
+x	Да. Но все методы должны быть реализованы при создании экземпляров enum
+-	Нет. enum является final-классом и не может имплементировать интерфейсы.
+-	Да. Но только интерфейсы Cloneable, Serializable и Externalizable
+
+Вопрос № 2
+<
+Как изменить размер массива внутри метода m класса B?
+class B {
+public void m(int[] arg) { 
+}
+}
+class Tester {
+public static void main(String[] args) {
+B b = new B();
+int a[] = new int[10];
+b.m(a);
+}
+}
+>
+-	arg.resize(100)
+-	arg = new int[100]
+-	arg.length = 100
+x	Изменить размер массива arg невозможно 
+!Размер массива изменить невозможно
+----Вопрос № 3
+<
+Пусть есть классы
+class Car {
+int size;
+String color = “black”;
+
+public Car(int size) {
+this.size = size;
+}
+}
+и 
+class MiniCar extends Car { }
+Каким образом можно определить конструктор без параметров в классе MiniCar, если мы хотим, чтобы размер машины по умолчанию был 5, а цвет – красный (отметьте все возможные варианты)?
+>
+-	public MiniCar() {
+this.color = “red”;
+this(5);
+}
+-	public MiniCar() {
+this.color = “red”;
+super(5);
+}
+-	public MiniCar() {
+super(5);
+this.color = “red”;
+}
+-	public MiniCar() {
+this(5);
+this.color = “red”;
+}
+
+Вопрос № 4
+<
+Измениться ли размер l, после вызова метода m?
+class B {
+public void m(final List arg) {
+arg.add("a");
+}
+}
+
+class Tester {
+public static void main(String[] args) {
+B b = new B();
+List l = new ArrayList();
+b.m(l);
+}
+}
+>
+x	Да. В список будет добавлен элемент
+-	Нет. Код не скомпилируется
+-	Нет. Будет выброшено исключение FinalVariableModificationException
+-	Нет. В метод m передается копия списка
+
+Вопрос № 5
+<
+Какой модификатор можно поставить у класса A?
+
+public class B {
+public static void main(String[] args) {
+class A {}
+}
+}
+>
+x	final
+-	public
+x	abstract
+-	static
+!Класс A – локальный, внутри метода psvm
+Вопрос № 6
+<
+Какой тип надо использовать вместо String, чтобы данный код скомпилировался?
+class A {
+public void m(String... args) { }
+}
+class Tester {
+public void m() {
+A a = new A();
+a.m(1, 3L, 4.4f);
+}
+}
+>
+-	Long
+-	Float
+-	Double
+x	Object
+x	Number
+-	Integer
+!Integer, Float, Double, Long extends Number и все от Object
+Вопрос № 7
+<
+Дано следующее перечисление:
+enum Spice { NUTMEG, CINNAMON, CORIANDER, ROSEMARY; }
+Какие из вариантов откомпилируются без ошибок:
+>
+x	Object ob = new Object(); Spice sp = (Spice)object;
+-	Object ob = new Object(); Spice sp = object; 
+x	Spice sp = Spice.NUTMEG; Object ob = (Object)sp; 
+x	Spice sp = Spice.NUTMEG; Object ob = sp; 
+!Все объекты в java наследуются от Object, следовательно легко к нему приводятся
+Вопрос № 8
+<
+Какие из следующих утверждений корректны?
+>
+x	Перечисления могут содержать публичные методы
+x	Можно создавать подклассы перечислений
+x	Перечисления могут содержать данные с модификатором private
+-	Перечисление enum должно декларировать, что оно расширяет java.lang.Enum
+
+Вопрос № 9
+<
+Переменные x и y – переменные типа (enum). Каов наилучший способ для проверки их на равенство?
+>
+x	if(x.equals(y))
+-	if(x.hashCode()==y. hashCode())
+-	if(x.ordinal()==y.ordinal())
+-	if(x.toString().equals(y.toString()))
+
+
+Вопрос № 10
+<
+Может ли enum содержать абстрактные методы?
+>
+x	Да. Но абстрактные методы должны быть переопределены при создании экземпляров enum
+-	Нет. enum является final-классом и не может содержать абстрактные методы.
+-	Нет. enum не может содержать любые методы, в том числе абстрактные.
+
+
+
+
+ 
+Примитивные типы и операторы
+
+Вопрос № 1
+<
+Какой примитивный тип не может быть приведен к любому другому примитивному типу?
+>
+-	int
+-	long
+-	char
+x	boolean 
+!char спокойно приводиться к int
+Вопрос № 2
+<
+Значения какого типа можно использовать в конструкции улучшенного for после символа «:»:?
+>
+x	Массивы
+-	Коллекции
+-	Любые типы
+x	Любые типы, имплементирующие Iterable
+
+Вопрос № 3
+<
+Для чего используются классы-обертки примитивных типов (Integer, Long, и т.д.)?
+>
+-	Для выполнения вычислений, т.к. типы-обертки повышают производительность вычислений
+-	Для изменения переданного параметра в методе, т.к. примитивы передаются по значению, и их нельзя изменить внутри метода, а обернутое значение можно
+-	Для возможности получать и присваивать значение null
+x	Для работы с коллекциями, т.к. коллекции в Java не умеют работать с примитивными типами
+!Обертки иммутабельны – т.е. при любом изменении создаеться новый объект
+Вопрос № 4
+<
+Каков будет результат выполнения следующего кода?
+1. int x = 5 * 4 % 3;
+2. System.out.println(x);
+>
+-	5 
+-	3 
+x	2 
+-	6 
+-	Ошибка компиляции на строке 1 
+!% - остаток от деления
+Вопрос № 5
+<
+Какой из операторов &= или &&= является допустимым?
+>
+-	&=
+-	Оба
+x	Ни один
+-	&&=
+
+Вопрос № 6
+<
+Что выведет данная программа:
+public class Test {
+static Integer i;
+public static void main(String args[]) {
+System.out.println(i+"?");
+}
+}
+>
+x	null?
+-	?
+-	0?
+-	Будет ошибка компиляции
+!Инициализация обертки по умолчанию null
+Вопрос № 7
+<
+Что нужно сделать, чтобы программа вывела "my class"?
+class MyClass {
+String name = "my class";
+
+public MyClass(String name) {
+this.name = name;
+}
+}
+
+public static void main(String[] args) {
+MyClass c = new MyClass();
+System.out.println(c.name);
+}
+>
+-	Необходимо объявить переменную name как public
+-	Необходимо объявить класс MyClass статическим
+x	Необходимо добавить конструктор без параметров в MyClass
+-	Необходимо объявить MyClass статическим и добавить конструктор без параметров
+-	Программа корректна
+-	Необходимо сделать все вышеперечисленное
+
+Вопрос № 8
+<
+Какой из двух фрагментов кода предотвратит возникновение NullPointerException
+if (a != null && a.size > 0){ //фрагмент 1
+if (a != null & a.size > 0){//фрагмент 2
+>
+-	Второй
+-	Оба
+-	Ни один
+x	Первый
+
+Вопрос № 9
+<
+Определите результат выполнения следующего кода, запущенного с помощью команды:
+Java HelloWorld hello world goodbye
+public static class HelloWorld{
+public static void main(String[] args){
+System.out.println(args[1]+args[2]);
+}
+}
+>
+-	Во время выполнения появится ArrayIndexOfBoundException
+-	nullnull
+-	hello world
+-	worldgoodbye
+-	Код не скомпилируеться
+-	world goodbye
+-	helloworld
+
+Вопрос № 10
+<
+Каков будет результат выполнения следующего кода?
+3 int x1 = 50; x2 = 75;
+4 boolean b = x1>=x2;
+5 if (b=true){
+6 System.out.println(“Успех”);
+7 } else {
+8 System.out.println(“Неудача”);
+9 }
+>
+-	Успех
+-	Неудача
+-	Ошибка компиляции на строке 4
+x	Ошибка компиляции на строке 5
+
+
+ 
+Declaration and Scoping
+Вопрос № 1
+<
+Что напечатает данная программа:
+public static void main(String args[]) {
+Integer a;
+System.out.println(a);
+}
+>
+x	программа не скомпилируется
+-	null
+-	ничего не напечатает
+-	0
+!Локальные переменные должна быть определены
+
+Вопрос № 2
+<
+Какое значение будет у переменной i после создания объекта?
+public class A {
+private int i;
+static {
+i = 1;
+}
+public A() {
+i = 2;
+}
+}
+>
+-	1
+-	2
+-	Значение не определено
+x	Код не скомпилируется
+!Нестатическая переменная в статическом блоке
+----Вопрос № 3
+<
+Корректна ли данная программа?
+interface Developer {
+void writeCode(); 
+}
+
+String devName = "Petrov";
+Developer dev = new Developer() {
+public void writeCode() {
+System.out.println("writing java code by "+devName);
+}
+};
+dev.writeCode();
+>
+-	Нет, необходимо объявить класс, имплементирующий интерфейс Developer
+-	Нет, необходимо объявить writeCode() в интерфейсе как public
+-	Да, корректна, и напечатает “Writing code by Petrov”
+-	Нет, необходимо объявить переменную devName как final
+
+Вопрос № 4
+<
+Какие модификаторы может иметь класс верхнего уровня?
+>
+-	static
+-	virtual
+x	final
+-	protected
+x	abstract
+x	public
+-	private
+!А также default и scriptfp
+Вопрос № 5
+<
+Пусть есть код:
+class Super {
+static int a = 0;
+}
+class Child extends Super {
+static int a = 1;
+
+public static void main(String args[]) {
+int a = 2;
+System.out.println(a);
+}
+}
+Как можно обратиться к статической переменной a класса Child, чтобы вывести 1?
+>
+-	a
+-	это невозможно
+x	Child.a
+-	child.a
+-	this.a
+
+Вопрос № 6
+<
+Что напечатает данная программа:
+public class Test {
+static Integer a;
+
+public static void main(String args[]) {
+System.out.println(a);
+}
+}
+>
+-	программа не скомпилируется
+-	ничего не напечатает
+-	0
+x	null
+!Будет определено значение по умолчанию - null
+Вопрос № 7
+<
+Каким образом в Java определить константу PI?
+>
+-	public static double PI = 3.14;
+-	public static const double PI = 3.14;
+-	public const double PI = 3.14;
+x	public static final double PI = 3.14;
+!В Java нет модификатора constl
+
+Вопрос № 8
+<
+Что напечатает такая программа:
+public class Test{
+static{
+System.out.print(“1”);
+}
+
+Test(){
+System.out.print(“2”);
+}
+public static void main(String[] args){
+System.out.print(“3”);
+}
+}
+>
+-	2 1 3
+-	3
+x	1 3
+-	1 2 3
+-	2 3
+!При выполнении psvm произойдет загрузка класса и выполниться статический блок
+Вопрос № 9
+<
+Что напечатает данная программа?
+1public class WaterBottle{
+2private String brand;
+3private Boolean empty;
+4
+5public static void main(String[] args){
+6WaterBottle wb = new WaterBottle();
+7If (!wb.empty){
+8System.out.print(‘Brand = ’ + wb.brand);
+9}
+10}
+11}
+>
+-	Ничего не напечатает
+-	Brand = null
+-	Ошибка компиляции на строке 8
+x	Ошибка компиляции на строке 7
+!При выполнении psvm произойдет загрузка класса и выполниться статический блок
+Вопрос № 10
+<
+Какое значение будет у локальной переменной i в точке (1)?
+Class A{
+private int I = 1;
+
+public void f(){
+int I;
+//1
+}
+}
+>
+-	Код не скомпелируеться
+-	1
+x	Значение не определено
+-	0
+!Локальную переменную необходимо инициализировать
+
+
+
+ 
+Виртуальная машина Java
+
+Вопрос № 1
+<
+Какие опции JVM используются для конфигурации Young Generation?
+>
+x	XMN
+-	XMX
+-	XMS
+-	Jurassic Generation
+!Xmn – the size of heap for the young generation
+Xms – initial minimum heap size
+Xmx – maximum heap suze
+
+Вопрос № 2
+<
+Из каких основных сегментов состоит память JVM?
+>
+x	Все вышеперечисленные
+-	Java Stack Memory
+-	Permanent Generation
+-	Heap Memory
+-	JVM Code
+!Картинка
+Вопрос № 3
+<
+Какой из приведенных загрузчиков классов сканирует стандартную библиотеку rt.jar?
+>
+-	Application ClassLoader
+x	Bootstrap ClassLoader
+-	Extension ClassLoader
+-	Ни один из вышеперечисленных
+!Bootstrap — реализован на уровне JVM и не имеет обратной связи со средой исполнения. Данным загрузчиком загружаются классы из директории $JAVA_HOME/lib. Т.е. всеми любимый rt.jar загружается именно базовым загрузчиком. Поэтому, попытка получения загрузчика у классов java.* всегда заканчиватся null'ом. Это объясняется тем, что все базовые классы загружены базовым загрузчиком, доступа к которому из управляемой среды нет.
+
+Управлять загрузкой базовых классов можно с помощью ключа -Xbootclasspath, который позволяет переопределять наборы базовых классов.
+
+System Classloader — системный загрузчик, реализованный уже на уровне JRE. В Sun JRE — это класс sun.misc.Launcher$AppClassLoader. Этим загрузчиком загружаются классы, пути к которым указаны в переменной окружения CLASSPATH.
+
+Управлять загрузкой системных классов можно с помощью ключа -classpath или системной опцией java.class.path.
+
+Extension Classloader — загрузчик расширений. Данный загрузчик загружает классы из директории $JAVA_HOME/lib/ext. В Sun JRE — это класс sun.misc.Launcher$ExtClassLoader.
+Вопрос № 4
+<
+Если происходит переполнение кучи, какой тип ошибки сгенерирован?
+>
+x	java.lang.OutOfMemoryError
+-	java.lang.StackOverflowError
+-	java.lang.StackOverflowException
+-	java.lang.StackLargeError
+
+Вопрос № 5
+<
+В какой части кучи создаются новые объекты?
+>
+-	Tenured
+x	Eden/Keep Area
+-	Perm Gen
+-	Survivor Space S0
+
+Вопрос № 6
+<
+Какой тип ссылок (XXX) в Java описывается следующим контрактом: «Когда Garbage Collector определяет, что объект доступен только через XXX-ссылку, то объект сразу удаляется из памяти»?
+>
+-	Phantom Reference
+-	Strong Reference (обыкновенные ссылки)
+x	Weak Reference
+-	Soft Reference
+!https://habrahabr.ru/post/169883/
+Вопрос № 7
+<
+Для каких опций выполняется условие, что значение первого параметра должно быть меньше значения второго для корректной работы JVM?
+>
+x	XMS и XMX
+-	XMN и XMX
+-	XMN и XSS
+-	XMS и XMN
+!Xmn – the size of heap for the young generation
+Xms – initial minimum heap size
+Xmx – maximum heap suze
+Xss - thread stack size
+Вопрос № 8
+<
+Какой из алгоритмов сборки мусора подходит под следующее описание: «Разработан специально для обработки больших куч в памяти (объемом больше 4 Гб) с минимальными паузами. Он разделяет пространство на большое количество мелких регионов»?
+>
+
+x	G1 Garbage Collector
+-	Concurrent Mark Sweep Collector
+-	Parallel GC
+-	Serial GC
+!Serial - GC  Последовательно выполняется minor GC и major GC. Эффективен на компьютерах с небольшим количеством (один/два) процессоров. Эффективен на компьютерах с большим количество виртуальных машин и запущенных JVM больше чем доступных процессоров
+
+Parallel GC - несколько потоков по сборке young памяти, один поток для сборки old памяти
+несколько потоков по сборке young и old памяти. Плюсы: Максимальная производительность. Минусы: Продолжительные паузы
+Concurrent Mark Sweep Collector - Несколько потоков по сборке мусора, сводит к минимуму перерывы из-за сборки мусора. Плюсы: Предсказуемость, Короткие паузы. Минусы: Снижение производительности.
+G1 - Сборка мусора в фоновом режиме, сводит к минимуму перерывы из-за сборки мусора. Плюсы: Предсказуемость, короткие паузы Подходит когда выделено очень много памяти (heap). Минусы: Снижение производительности. G1 рекомендуется, если (не обязательно все):
+Нужна хорошая производительность
+Продолжительность пауз (<0.5-1s)
+Минимальная настройка
+Размер «кучи» >5Gb
+Занятость «кучи» >50%
+Скорость создания объектов серьезно варьируется
+Фрагментация «кучи»
+Вопрос № 9
+<
+На какие части физически разделена JVM Heap?
+>
+x	Young  Generation
+x	Old Generation
+-	Current Generation
+-	Permament Generation
+
+
+Вопрос № 10
+<
+Какой из перечисленных компонентов запрашивает память у операционной системы при старте приложения на Java?
+>
+-	JRE
+-	JNI
+x	JVM
+-	JDK
+
+Вопрос № 11
+<
+Какие данные храняться в Java Stack Memory?
+>
+x	Локальные примитивные переменные
+-	Статические методы
+x	Ссылки на объекты в куче
+-	Новые объекты
+-	Строковые константы
+Вопрос № 12
+<
+Каков будет результат выполнения следующего фрагмента кода?
+public class StrEquals{
+public static void main(String[] args){
+String s1 = “hi”;
+String s2 = new String(“hi”);
+String s3 = “hi”;
+System.out.print(s1==s2);
+System.out.print(“\\”);
+System.out.print(s1==s3);
+}
+}
+>
+-	true\false
+x	false\true
+-	false\false
+-	true\true
+
+Вопрос №13
+<
+Какие из перечисленных процессов выполняются JVM автоматически.
+>
+-	Освобождение памяти
+-	Сериализация
+-	Десериализация
+-	Выделение памяти
+x	Все вышеперечисленные
+
+
+ 
+Generics
+
+----Вопрос № 1
+<
+Объявлены два интерфейса:
+interface BI { }
+interface DI extends BI { }
+Следующие опции содержат объявления шаблонного класса X. Какое из определений содержит корректное описание параметра типа, являющегося верхней границей DI допустимых значений?
+>
+-	class X <T extends DI> { }
+-	class X <T super DI> { }
+-	class X <T extends ? & DI> { }
+-	class X <T implements DI> { }
+
+Вопрос № 2
+<
+Какими из приведенных конструкций можно заменить //Stmt#1 в следующем фрагменте кода, чтобы программа осталось корректной?
+class Base<T> { }
+class Derived<T> { }
+class Test {
+public static void main(String[] args) 
+// Stmt#1
+}
+}
+>
+x	Derived<Integer> b = new Derived<Integer>();
+x	Base<Number> b = new Base<Number>();
+-	Base<Integer> b = new Derived<Integer>();
+-	Derived<Number> b = new Derived<Integer>();
+
+Вопрос № 3
+<
+Какими из приведенных конструкций можно заменить //Stmt#1 в следующем фрагменте кода, чтобы программа осталась корректной?
+class Base<T> { }
+class Derived<T> { }
+class Test {
+public static void main(String[] args) {
+// Stmt#1
+}
+}
+>
+-	Derived<? super Number> b = new Derived<Integer>();
+x	Base<? extends Number> b = new Base<Number>();
+x	Derived<?> b = new Derived<Integer>();
+-	Base<?> b = new Derived<Integer>();
+
+Вопрос № 4
+<
+Замените XXX объявлением, которое позволит приведенному коду скомпилироваться без ошибок и предупреждений.
+public void m1(XXX list) {
+Number n = list.get(0);
+}
+>
+x	List<? extends Number>
+-	List<? super Number>
+-	List<Number extends ?>
+-	List<?>
+
+Вопрос № 5
+<
+Для чего в Java был добавлен механизм Generics?
+>
+-	Делают код более оптимизированным и понятным
+-	Добавляют стабильность в код за счет того, что большинство багов определяются в процессе исполнения
+-	Делают код быстрее
+x	Добавляют стабильность в код за счет того, что большинство багов определяются на этапе компиляции
+
+----Вопрос № 6
+<
+Какие изменения необходимо внести в представленный класс, чтобы получить преимущества от использования Generics без изменения функциональности?
+public class BookStore {
+Map map = new HashMap(); //1
+public BookStore() {
+map.put(new Book("A111"), new Integer(10)); //2
+}
+public int getNumberOfCopies(Book b) { //3
+Integer i = (Integer) map.get(b); //4
+return i == null ? 0 : i.intValue(); //5
+}
+}
+>
+-	Заменить строку //1 на Map<Book, int> map = new HashMap<Book, int>();
+-	Заменить строку //2 на map.put(new Book(“A111”, 10));
+-	Заменить строку //1 на Map<Book, Integer> map = new TreeMap<Book, Integer>();
+-	Заменить строку //3 на public Integer getNumberOfCopies(Book b)
+-	Заменить строки //4 и //5 на return map.get(b);
+
+----Вопрос № 7
+<
+Какие из приведенных объявлений метода позволят скомпилироваться и выполниться без ошибок и предупреждений следующему фрагменту кода? Все конструкции, скрытые за знаком /* … */, являются корректными.
+interface Sink<T> {
+flush(T t);
+}
+Sink<Object> s = /* … */
+Collection<String> cs = /* … */
+String str = writeAll(cs, s);
+>
+-	public static <T> T writeAll(Collection<T> coll, Sink<? super T> snk) { /* … */ }
+-	public static <T> T writeAll(Collection<T> coll, Sink<T> snk) { /* … */ }
+-	public static <T> T writeAll(Collection<? extends T> coll, Sink<? super T> snk) { /* … */ }
+-	public static <T> T writeAll(Collection<T> coll, Sink<? extends T> snk) { /* … */ }
+
+Вопрос № 8
+<
+Какие из приведенных утверждений являются корректными для данного фрагмента кода?
+class WildCard {
+interface BI { }
+interface DI extends BI { }
+interface DDI extends DI { }
+
+static class C<T> { }
+static void foo(C<? super DI> arg) { }
+
+public static void main(String[] args) {
+foo(new C<BI>()); //1
+foo(new C<DI>()); //2
+foo(new C<DDI>()); //3
+foo(new C()); //4
+}
+}
+>
+-	Compilation Failed at //4
+x	Compilation Failed at //3
+-	Compilation Failed at //2
+-	Compilation Failed at //1
+
+----Вопрос № 9
+<
+Какие из приведенных методов скомпилируются без ошибок? Shape – корректный non-final кдасс
+>
+-	public List<? Extends Shape>m4(List<? Extends Shape> strList){
+List<Shape> list = new ArrayList<>();
+list.add(new Shape());
+list.addAll(strList);
+return list;
+}
+-	public void m5(ArrayList<? Extends Shape> strList){
+List<Shape> list = new ArrayList<>();
+list.add(new Shape());
+list.addAll(strList);
+}
+-	public List<Shape> m3(ArrayList<? Extends Shape> strList){
+List<? extends Shape> list = new ArrayList<>();
+list.addAll(strList);
+return list;
+}
+-	public void m6(ArrayList<Shape> strList){
+List<? extends Shape > list = new ArrayList<>();
+list.add(new Shape());
+strList.addAll(list);
+}
+
+
+ 
+Многопоточность
+
+Вопрос № 1
+<
+Дана следующая программа:
+static StringBuffer sb = new StringBuffer();
+static class MyThread extends Thread {
+public void run() {
+for (int i=0;i<10000;i++) {
+sb.append(getName());
+}
+}
+}
+public static void main(String[] args)
+throws InterruptedException {
+MyThread t1 = new MyThread();
+MyThread t2 = new MyThread();
+t1.setName("1"); t2.setName("2");
+t1.start(); t2.start();
+t1.join(); t2.join();
+System.out.println(sb.toString().length());
+}
+Каков будет результат ее работы?
+>
+-	Программа будет выводить 20000, если поместить sb.append() в блок synchronized
+x	Программа будет всегда выводить 20000
+-	Программа в любом случае будет печатать случайные числа
+-	Программа будет выводить 20000, если заменить StringBuffer на StringBuilder
+
+Вопрос № 2
+<
+Каков будет результат выполнения следующего кода:
+static class MyThread extends Thread {
+public void run() {
+System.out.print("Thread ");
+}
+}
+public static void main(String [] args) {
+MyThread t = new MyThread();
+t.start();
+System.out.print("one. ");
+t.start();
+System.out.print("two. ");
+System.out.print("Thread ");
+}
+>
+-	Результат работы не детерминирован.
+x	Во время выполнения произойдет исключение
+-	Код не откомпилируется
+-	Thread one. Thread two.
+!Произойдет исключение IllegalThreadStateException в строке t.start();
+
+
+
+
+
+Вопрос № 3
+<
+Что выведет данная программа?
+static class MyThread extends Thread {
+public void run() {
+System.out.print(getName());
+}
+}
+public static void main(String[] args) {
+MyThread thread1 = new MyThread();
+MyThread thread2 = new MyThread();
+thread1.setName("1");
+thread2.setName("2");
+thread1.start();
+thread2.start();
+}
+>
+-	12
+-	Ничего не выведет
+-	21
+x	Результат непредсказуем
+
+----Вопрос № 4
+<
+Предположим, в потоке A вызывается метод b.wait(2000) для монитора блокировки b.
+После того, как данный метод завершится, когда поток A снова станет кандидатом на выполнение?
+>
+-	После того, как в другом потоке будет вызван метод b.notifyAll(), или через 2 секунды
+-	Через 2 секунды после того, как в другом потоке будет вызван метод b.notifyAll()
+-	Через 2 секунды после того, как блокировка объекта b будет освобождена
+-	После того, как блокировка объекта b будет освобождена, или через 2 секунды
+
+----Вопрос № 5
+<
+Пусть есть следующий класс для банковского счета:
+class A {
+private float balance;
+public A (float balance) {
+this.balance = balance;
+}
+public A dec(float f) {
+return new A(this.balance-f);
+}
+public A inc (float f) {
+return new A (this.balance+f);
+}
+}
+Является ли данный класс потокобезопасным?
+>
+-	Да, если пометить все методы как synchronized
+-	Да, если пометить метод withdraw() как synchronized
+-	Нет, не является
+-	Да, является
+----Вопрос № 6
+<
+Необходимо выводить имя выполняющегося потока через точку с запятой. 
+Сейчас в результате работы программы мы увидим такой вывод: 
+1;2;;1;1;21;1;2;;1;;1;1;;2;2;2;
+Что надо исправить в программе, чтобы все номера потоков были разделены знаком ";"?
+static StringBuilder sb = new StringBuilder();
+static class MyThread extends Thread {
+public void run() {
+for (int i=0;i<100;i++) {
+sb.append(getName());
+sb.append(";");
+}
+}
+}
+public static void main(String[] args)
+throws InterruptedException {
+MyThread thread1 = new MyThread();
+MyThread thread2 = new MyThread();
+thread1.setName("1");
+thread2.setName("2");
+thread1.start();
+thread2.start();
+thread1.join();
+thread2.join();
+System.out.println(sb.toString());
+}
+>
+-	Необходимо поместить тело цикла for в блок synchronized(this) {...}
+-	Необходимо использовать StringBuffer вместо StringBuilder
+-	Необходимо поместить тело цикла for в блок synchronized(sb) {...}
+-	Необходимо пометить метод run как synchronized
+-	Это невозможно сделать
+-	Необходимо поместить строку System.out.println(sb.toString()); в блок synchronized
+
+Вопрос № 7
+<
+Каким образом лучше всего завершить работу потока из другого потока?
+>
+x	Поток, желающий завершить работу другого потока, должен использовать метод Thread.interrupt(), а убиваемый поток должен постоянно проверять Thread.isInterrupted
+-	Лучше всего использовать Thread.stop
+-	Поток, желающий завершить работу другого потока, должен установить флаг, который убиваемый поток должен постоянно проверять
+-	Рекомендуется использовать метод Thread.interrupt(), который приводит к прекращению работы потока
+
+----Вопрос № 8
+<
+Какие утверждения о порядке выполнения “происходит-прежде” (happens-before) корректны?
+>
+-	Разблокировка монитора происходит-прежде каждой последующей блокировки того же монитора
+-	Каждое действие в данном потоке происходит-прежде каждого действия в другом потоке, если эти потоки запущены последовательно
+-	Каждое действие в данном потоке происходит-прежде каждого действия в этом же потоке, которое идет прежде в программном порядке
+-	Запись в поле volatile происходит-прежде каждого последующего чтения того же самого volatile
+
+----Вопрос № 9
+<
+Дан следующий код:
+static int counter;
+static class MyThread extends Thread{
+public void run(){
+for(int i=0; i<10000;i++){
+counter++;
+}
+}
+}
+public static void main(String[] args) throw InterruptedException{
+MyThread t1 = new MyThread();
+MyThread t2 = new MyThread();
+t1.start(); t2.start();
+t1.join(); t2.join();
+System.out.println(counter);
+}
+Необходимо, чтобы программа выводила число 2000 (каждый из двух потоков должен отработать по 10000 раз). Как это сделать?
+>
+-	Пометить тело цикла for в блок synchronized(MyThread.class){counter++}
+-	Пометить тело цикла в блок synchronized(this){counter++}
+-	Программа всегда будет выводить 2000
+-	Использовать atomic-переменную counter
+-	Пометить счетчик counter как volatile
+	Использовать переменную класса Integer в качестве счетчика
+
+----Вопрос № 10
+<
+В чем преимущества использования объекта Lock вместо synchronized-блоков?
+>
+-	Есть возможность получить блокировку, только если никакой другой объект не получил блокировку, используя метод tryLock()
+-	Есть возможность иметь разные блокировки для пишущих и читающих потоков – ReadLock и WriteLock
+-	Есть возможность временно передавать блокировку другому потоку, используя метод sendLock()
+-	Есть возможность временно приостановить блокировку, используя метод sleepLock(ms)
+
+Вопрос № 11
+<
+Что напечатает данная программа?
+static class DoSomething impliments Runnable{
+public void run(){
+System.out.println(“Do something”);
+}
+}
+public static void main(String[] args)
+throw InterruptedException{
+DoSomething r = new DoSomething();
+Thread t = new Thread(r);
+t.start();
+t.join();
+System.out.print(“else”);
+}
+>
+x	Do something else
+-	Результат непредсказуем
+-	Do something
+-	else
+-	else Do something
+
+
+
+
+
+ 
+Исключения
+Вопрос № 1
+<
+Имеется следующий код: 
+class SystemException extends Exception {}
+class BusinessException extends Exception {}
+class LocalException extends BusinessException {}
+Пусть в родительском классе X определен следующий метод:
+void execute() throws BusinessException { ... }
+Пусть есть класс Y, расширяющий класс X.
+Какие из следующих методов могут быть определены в классе Y?
+>
+x	void execute() throws LocalException, BusinessException {…}
+-	void execute() throws SystemException {…}
+x	void execute() {…}
+x	void execute() throws BusinessException {…}
+
+Вопрос № 2
+<
+Имеется код:
+class BusinessException extends Exception {}
+class LocalException extends BusinessException {}
+
+public void test() {
+try {
+throw new LocalException();
+} catch(BusinessException be) {
+System.out.print("1");
+} catch(LocalException le) {
+System.out.print("2");
+} finally {
+System.out.print("3");
+}
+
+Что будет выведено при выполнении метода test()?
+>
+-	13
+x	код не скомпилируется
+-	23
+-	1
+-	123
+-	2
+!Error:(84, 11) java: exception ru.home.LocalException has already been caught
+Вопрос № 3
+<
+Имеется код:
+public static void main(String[] args) {
+String city = null;
+if (city.equals("Moscow")) {
+System.out.print("true");
+} else {
+System.out.print("false");
+} finally {
+System.out.print("finally");
+}
+}
+Что будет напечатано в результате его выполнения?
+>
+-	false
+-	falsefinally
+x	код не скомпилируется
+-	finally
+-	finally, за которым будет следовать стектрейс NullPointerException
+!finally без try
+Вопрос № 4
+<
+Пусть есть метод, порождающий исключение:
+public void test() throws BusinessException {};
+Необходимо ли вызывать этот метод в блоке try catch?
+public callTest() throws SystemException {
+try {
+test();
+} catch(BusinessException e) {
+}
+}
+>
+-	Нет, если BusinessException унаследован от Exception
+x	Нет, если BusinessException унаследован от RuntimeException
+-	Нет, это ни в каком случае не требуется
+x	Нет, если BusinessException унаследован от SystemException
+-	Да, это в любом случае необходимо
+!SystemException наследуется от RuntimeException. Поэтому только RuntimeException и SystemException.
+Вопрос № 5
+<
+Пусть есть такой код:
+public class Test {
+public static void main(String args[]) throws Exception {
+try {
+throw new FirstException();
+} finally {
+throw new SecondException();
+}
+}
+}
+
+class FirstException extends Exception {}
+class SecondException extends Exception {}
+Какое исключение будет выброшено в методе main()?
+>
+-	FirstException
+x	SecondException, при этом FirstException будет потерян
+-	оба исключения одновременно
+-	SecondException, при этом можно будет получить доступ к FirstException методом getCause()
+
+Вопрос № 6
+<
+Что произойдет в результате выполнения такой программы?
+public class Runner {
+private void run() {
+try {
+run();
+} catch (Exception e) {
+System.out.print("exception,");
+}
+System.out.print("finished,");
+}
+
+public static void main(String[] args) {
+new Runner().run();
+System.out.println("done");
+}
+}
+>
+-	Будет напечатано exception,done
+-	Будет напечатано exception,finished,done
+-	Программа завершит работу с исключением OutOfMemoryError
+-	Будет напечатано exception,finished,
+-	Программа не скомпилируется
+-	Будет напечатано finished,done
+x	Программа завершит работу с исключением StackOverflowError
+!Рекурсивное выполнение метода run()
+Вопрос № 7
+<
+Какие исключения может выбрасывать метод service(), определенный следующим образом:
+public void service();
+>
+-	никакие
+-	Exception
+-	совершенно любые
+-	Throwable
+x	RuntimeException
+
+Вопрос № 8
+<
+Пусть у нас есть классы
+class A {
+public void calculate() throws MyException;
+}
+
+class B extends A {
+}
+И исключения
+class MyException extends Exception {}
+class SubException extends MyException {}
+class YourException extends Exception {}
+Какие определения метода calculate() в классе B не вызовут ошибки компиляции:
+>
+-	public void calculate() throws MyException {};
+-	public void calculate() throws SubException {};
+x	public void calculate() throws YourException {};
+-	public void calculate() {};
+x	public void calculate() throws Exception {};
+x	public void calculate() throws MyException, YourException {}; 
+-	public void calculate() throws MyException {};
+Вопрос № 9
+<
+Пусть есть класс Mouse;
+public class Mouse{
+public String name;
+
+public void run(){
+try{
+name.toString();
+System.out.print(“1”);
+} catch (NullPointerException e){
+System.out.print(“2”);
+throw e;
+}
+System.out.print(“3”)
+}
+
+public static void main(String[] args){
+new Mouse().run();
+System.out.print(“4”);
+}
+}
+Что будет напечатано в результате выполнения?
+>
+x	Стек вызовов для NullPointerException
+-	4
+x	2
+-	1
+-	3
+
+Вопрос № 10
+<
+Как будет выполняться код после возникновения исключения в строке 1:
+try{
+throw new IOException();//1
+} catch (IOException ex){
+throw new IOException();//2
+} catch (Exception ex){
+//3
+} finally{
+//4
+}
+//5
+>
+-	2 и передача исключения IOException из строки 2 выше
+-	2, 4 и передача исключения IOException из строки 2 выше
+-	2, 3, 4, 5
+x	2, 4, 5
+
+Вопрос № 11
+<
+Определено исключение BusinessException;
+class BusinessException extends Exception{}
+Можно ли передавать в исключение дополнительную информацию о причине его возникновения?
+>
+-	Возможно, но только если унаследовать исключение от RuntimeException
+-	Возможно, если к классу исключения добавить сеттеры, принимающие дополнительную информацию
+-	Нет, это не возможно
+-	Возможно, если объявить в исключении public поля
+x	Возможно, если определить конструктор, принимающий дополнительную информацию как параметры
+
+----Вопрос № 12
+<
+Если скомпилировать и вызвать метод m, что произойдет с исключением из строки 1;
+public void m() throws IOException{
+try{
+throw new IOException();//1
+} catch (IOException ex){
+throw new IOException();//2
+} cacth (Exception ex){
+
+} finally{
+
+}
+}
+>
+-	Оно будет сохранено в глобальный список исключений 
+-	Оно будет передано в метод, который вызвал метод m()
+x	Оно будет утеряно
+x	Оно будет помещено внутрь исключения в строке 2
+
+ 
+Сериализация
+
+Вопрос № 1
+<
+Каков будет результат выполнения следующего фрагмента кода?
+public class A implements Serializable {
+transient int a = 7;
+static int b = 9;
+}
+public class B implements Serializable {
+public static void main(String[] args) {
+A a = new A();
+try {
+ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(“test.ser”));
+os.writeObject(a);
+os.close();
+System.out.print(a.b + “ “);
+
+ObjectInputStream is = new ObjectInputStream(new FileInputStream(“test.ser”));
+A s2 = (A) is.readObject();
+is.close();
+System.out.println(s2.a + “ “ + s2.b);
+} catch (Exception ex) {
+ex.printStackTrace();
+}
+}
+}
+>
+-	9 7 9
+-	9 0 0
+-	0 0 0
+x	9 0 9
+!После десериализации так как a transient то значение будет по умолчанию 0
+----Вопрос № 2
+<
+Какие из приведенных утверждений верны в контексте сериализации объектов в Java?
+>
+-	Интерфейс Serializable объявляет два метода: readObject() и writeObject(). Для поддержки сериализации в произвольном классе необходимо наследовать интерфейс Serializable и переопределить указанные методы
+x	При сериализации объекта атрибуты класса, объявленные с модификатором transient, не будут сериализованы (следовательно, их значения будут утрачены после десериализации)
+-	Если попытаться сериализовать или сохранить на диск объект, который не реализует интерфейс Externalizable, то будет сгенерировано исключение NotExternalizableException
+-	Если сериализовать объект, имеющий ссылки на другие объекты, то механизм сериализации также добавит эти объекты в поток сериализованных байтов
+-	Интерфейс Externalizable является интерфейсом-маркером: пустой интерфейс, который не содержит определения методов
+!Для того чтобы сериализовать объект с ссылками на другой объект, ссылаемые объекты должны быть сериализуемы иначе transient и при десериализации сслыки будут на null.
+Вопрос № 3
+<
+Externalizable класс должен обязательно выполнять следующие условия:
+>
+-	Наследовать интерфейс java.io.Externalizable
+-	Реализовывать метод readExternal() для чтения данных из потока и восстановления состояния объекта
+x	Все вышеперечисленные
+-	Иметь открытый конструктор без параметров
+-	Реализовывать метод writeExternal() для сохранения состояния объекта
+
+Вопрос № 4
+<
+Что из перечисленного является процессом извлечения/восстановления состояния объекта из потока?
+>
+-	Сериализация
+-	Фильтрация файла
+-	Ничего из перечисленного
+x	Десериализация
+-	Закрытие потока данных
+
+Вопрос № 5
+<
+Дан следующий фрагмент кода:
+public class Data implements Serializable {
+public static String f1;
+public static transient int f2;
+public transient boolean f3;
+public final static String f4 = “4”;
+public String f5 = “5”;
+}
+Data d = new Data();
+d.f1 = “f1”;
+d.f2 = “f2”;
+d.f3 = true;
+Какие поля класса останутся неизменными, если объект класса сериализовать, а после десериализовать в другой JVM?
+>
+-	f1, f4, f5
+x	f4, f5
+-	f3, f5
+-	f5
+!Спецификаторы transient и static означают, что поля, помеченные ими, не могут быть предметом сериализации, но существует различие в десериализации. Так, поле со спецификатором transient после десериализации получает значение по умолчанию, соответствующее его типу (объектный тип всегда инициализируется по умолчанию значением null), а поле со спецификатором static получает значение по умолчанию в случае отсутствия в области видимости объектов своего типа, а при их наличии получает значение, которое определено для существующего объекта.
+Вопрос № 6
+<
+Имеет ли программист возможность вносить изменения в механизм сериализации (переопределять процесс сериализации) в Java?
+>
+x	Да, наследовать интерфейс Externalizable и переопределить методы writeExternal() и readExternal()
+-	Нет верных ответов
+-	Да, наследовать интерфейс Serializable и добавить методы writeExternal() и readExternal()
+-	Нет, процесс сериализации строго прописан в системных библиотеках
+!interface Externalizable extends Serializable {
+public void writeExternal(ObjectOutput out)
+throws IOException;
+public void readExternal(ObjectInput in)
+throws IOException, java.lang.ClassNotFoundException;
+}
+
+Вопрос № 7
+<
+Каков будет результат выполнения следующего фрагмента кода?
+public class A {
+public A() { System.out.println(“A”); }
+}
+public class B extends A implements Serializable {
+public B() { System.out.println(“B”); }
+}
+public class Test {
+public static void main(String[] args) {
+B b = new B();
+ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream(“data”));
+save.writeObject(b);
+save.flush();
+
+ObjectInputStream restore = new ObjectInputStream(new FileInputStream(“data”));
+B z = (B) restore.readObject();
+}
+}
+>
+-	A B
+-	B B
+x	A B A
+-	A B A B
+!Поэтапно: вызов конструктора базового класса, вызов конструктора, сериалиация, десиарилизация, вызов конструктора базового класса, так как class A не сериализуеться. Если бы была бы сериализация A, то конструктор не вызывался и было A B
+Вопрос № 8
+<
+Каков будет результат выполнения следующего фрагмента кода?
+class A{}
+public class B implements Serializable{
+A a = new A();
+public static void main(String[] args){
+B b = new B();
+try{
+FileOutputStream fs = new FileOutputStream(“b.ser”);
+ObjectOutputStream os = new ObjectOutputStream(fs);
+os.writeObject(b);
+os.close();
+} catch (Exception ex){
+ex.printStackTrace();
+}
+}
+}
+>
+-	Выполниться без ошибок, объект класса А будет сериализован
+x	java.io.NotSerializableException; Because class A is not Serializable
+-	Compilation Failed; Because class A is not Serializable
+-	Выполниться без ошибок, но объект класса А не будет сериализован
