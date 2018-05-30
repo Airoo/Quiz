@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.CheckBox?>
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sbt.controller.QuizViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sbt.controller.QuizView">
    <children>
       <GridPane layoutX="12.0" layoutY="100.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="5.0">
          <columnConstraints>

@@ -1,0 +1,2752 @@
+[
+  {
+    "section": null,
+    "number": null,
+    "description": null,
+    "help": null,
+    "type": "EMPTY",
+    "answers": []
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Какие требования предъявляются к методу equals:\n",
+    "help": "рефлексивность x.equals(x)=true\nсимметричность x.equals(y)=true, y.equals(x)=true\nтранзитивность x.equals(z)=true, y.equals(z)=true, x.equals(y)=true \nнепротиворечивость x.equals(x)=true постоянно\nx.equals(null)=false\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tДля любых не null x – x.equals(null) возвращает false\n",
+        "correct": true
+      },
+      {
+        "answer": "\tДля любых x и y не равных null, если x.equals(у) возвращает true, то x.hashCode() равен y.hashCode()\tЕсли x.hashCode() и y.hashCode() равны, то x.equals(у) должно быть true\n",
+        "correct": true
+      },
+      {
+        "answer": "\tДля любых не null x – x.equals(x) возвращает true\tЕсли x равно null - x.equals(null) возвращает true\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Для чего используется класс Class?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tДля создания объектов данного класса\n",
+        "correct": true
+      },
+      {
+        "answer": "\tДля получения списка аннотаций у данного класса\tДля управления памятью, выделяемой для объекта данного класса\n",
+        "correct": true
+      },
+      {
+        "answer": "\tДля получения полей и методов класса\tДля динамической загрузки классов во время выполнения\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "В каких случаях нужно использовать аннотацию @Override?\n",
+    "help": "@Overide не является обязательной\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tЖелательно при переопределении метода\tЖелательно при переопределенни класса\tЖелательно при перегрузке метода\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Как определить собственную аннотацию MyAnnotation? Укажите корректный синтаксис.\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tpublic @interface MyAnnotation\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Какие требования предъявляются к методу hashCode()?\n",
+    "help": "для одного и того-же объекта, хеш-код всегда будет одинаковым;\nесли объекты одинаковые, то и хеш-коды одинаковые\nесли хеш-коды равны, то входные объекты не всегда равны (коллизия)\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\thashCode() должна гарантировать, что значения, возвращаемые ею для разных объектов, не совпадают\n",
+        "correct": true
+      },
+      {
+        "answer": "\tМногократные вызовы hashCode() у одного и того же объекта возвращают одно и то же значение\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Каковы правила контракта между hashCode() и equals()?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tЕсли два объекта возвращают разные значения hashCode(), то они не могут быть равны\n",
+        "correct": true
+      },
+      {
+        "answer": "\tЕсли два объекта равны, они должны возвращать одинаковое значение hashCode()\tЕсли два объекта не равны, то и hashCode() у них обязательно отличаеться\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Что лучше использовать в данном фрагменте вместо оператора “+” для соединения строк?\npublic String m(String… a){\nString result = “”;\nfor (String e: a){\nresult = result + e;\n}\nreturn result;\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tStringBuilder\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Что выведет такая программа:\nString s1 = new String(“hello”);\nString s2 = new String(“hello”);\nString s3 = “hello”;\nString s4 = “hello”;\nSystem.out.println(s1==s2);\nSystem.out.println(s1==s3);\nSystem.out.println(s3==s4);\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tfalse flase true\ttrue false true\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "Пусть мы хотим определить аннотацию MyAnnotation с параметром, например @MyAnnotation(“this is my value”). Укажите корректный синтаксис для описания такого поля в аннотации.\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tString value();\tString setValue();\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 10",
+    "description": "Пусть есть класс, описывающий человека:\n\npublic class Person{\n//дата рождения\nprivate Date dateOfBirth;\n\n//возраст\nprivate int age;\n//полное имя\nprivate String fullName;\n\n//компания в которой человек работает\nprivate String workInCompany;\n}\nКакие поля следует включить в вычисления hashCode() и equals()?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tdateOfBirth\tworkInCompany\tage\n",
+        "correct": true
+      },
+      {
+        "answer": "\tfullName\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 11",
+    "description": "Что напечатает программа?\nString a = new String(\"abc\");\nString b = new String(a).intern();\nSystem.out.println(a == b);\n",
+    "help": "a и b находятся в разных блоках памяти\n \nКоллекции\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tfalse\tПроизойдет исключение\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Какова эффективность поиска объекта в HashMap по ключу?\n",
+    "help": "Поиск по Hash.. за O(1), \n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tO(1)\tO(n^2)\tO(n)\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Что произойдет, если hashCode ключа поменяется после добавления в HashMap?\n",
+    "help": "Get будет возвращать null, но объект будет храниться в HashMap\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tКлюч и соответствующее ему значение будут удалены из HashMap\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНикаких проблем не появится. Метод get() будет продолжать находить этот ключ.\n",
+        "correct": false
+      },
+      {
+        "answer": "\tМетод get() будет возвращать null для этого ключа\n",
+        "correct": true
+      },
+      {
+        "answer": "\tБудет выброшено исключение ConcurrentModificationException\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Укажите, какие методы надо переопределить в классе Element для корректной работы\nSet<Element> set = new TreeSet<>()?\n",
+    "help": "Для корректного сравнения необходимо реализовать интерфейс Comparable иди Comparator\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\thashCode()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tequals()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tникакие\n",
+        "correct": true
+      },
+      {
+        "answer": "\ttoString()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tcompareTo()\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Укажите, какие методы надо переопределить в классе Element, для корректной работы множества\nSet<Element>являются потокобезопасными: set = new HashSet<>()?\n",
+    "help": "Все что связано c Hash.. необходимо переопределять методы equals и hashcode\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\ttoString()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tникакие\n",
+        "correct": false
+      },
+      {
+        "answer": "\thashCode()\n",
+        "correct": true
+      },
+      {
+        "answer": "\tequals()\n",
+        "correct": true
+      },
+      {
+        "answer": "\tcompareTo()\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Пусть есть такой код:\npublic class Test {\nstatic List<Integer> a = Arrays.asList(1,2,3,4,5);\npublic static void main(String args[]) {\nfor (int i=0;i<a.size();i++) {\nif (a.get(i)>1) a.remove(i);\n}\nSystem.out.println(a);\n}\n}\nКорректен ли такой код, удаляющий из коллекции все элементы, большие 1? \n",
+    "help": "Возникнет ошибка UnsupportedOperationException, так как Arrays.asList(..)  создает неизменяемый List\n-----\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tОшибок не будет, в результате выполнения в коллекции останется 1 элемент\n",
+        "correct": false
+      },
+      {
+        "answer": "\tОшибок не будет, в результате выполнения в коллекции останется 2 элемента\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, будет ошибка во время компиляции\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, будет ошибка во время выполнения\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Может ли TreeSet содержать null?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tДа\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДа, если при создании задан comparator, который умеет обрабатывать null\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДа, но только при создании его из коллекции, в которой null уже присутствовал (конструктором TreeSet(Collection<? extends E> c))\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Что выведет программа?\nList<Integer> list = new ArrayList<Integer>(Arrays.asList(new Integer[] { 7, -3, 15, 2, -19 }));\nint x = 2;\nint y = Collections.binarySearch(list, x);\nSystem.out.println(y);\n",
+    "help": "Лист не отсортирован, результат неопределен\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tВыбросит исключение IndexOutOfBoundsException\n",
+        "correct": false
+      },
+      {
+        "answer": "\t3\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНе скомпилируется\n",
+        "correct": false
+      },
+      {
+        "answer": "\tРезультат не определен\n",
+        "correct": true
+      },
+      {
+        "answer": "\t2\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Какова эффективность поиска объектов в TreeMap по ключу?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tO(n^2)\n",
+        "correct": false
+      },
+      {
+        "answer": "\tO(1)\n",
+        "correct": false
+      },
+      {
+        "answer": "\tO(log n)\n",
+        "correct": true
+      },
+      {
+        "answer": "\tO(n)\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "Какую структуру данных лучше использовать если необходимо, чтобы элементы были уникальными и были отсортированы?\n",
+    "help": "Уникальность обеспечивает Set, LinkedHashSet – запоминает порядок вставки\n\n----\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tHashSet\n",
+        "correct": false
+      },
+      {
+        "answer": "\tTreeMap\n",
+        "correct": false
+      },
+      {
+        "answer": "\tTreeSet\n",
+        "correct": true
+      },
+      {
+        "answer": "\tLinkedHashSet\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 10",
+    "description": "Для чего нужно переопределять hashCode()?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tДля поиска объекта в HashSet\n",
+        "correct": true
+      },
+      {
+        "answer": "\tДля поиска объекта в TreeMap\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДля поиска объекта в TreeSet\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДля поиска объекта в HashMap\n",
+        "correct": true
+      },
+      {
+        "answer": "\tДля хеширования объектов в целях последующего хранения в базе данных\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДля более еффективной работы метода equals\n",
+        "correct": false
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 11",
+    "description": "Как увеличиться внутрення емкость HashMap при достижении заданного уровня заполненности?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tв 4 раза\n",
+        "correct": false
+      },
+      {
+        "answer": "\tна 10\n",
+        "correct": false
+      },
+      {
+        "answer": "\tв 2 раза\n",
+        "correct": false
+      },
+      {
+        "answer": "\tна 100\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 12",
+    "description": "Что можно вставить вместо //(1), чтобы программа скомпилировалась и выполнилась без ошибок:\npublic class C{\npublic void size(List<?> l){\nSystem.out.println(l.size());\n}\n\npublic static void main(String[] args){\nC c = new C();\n//(1)\nc.size(list);\n}\n}\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tList<?> list = new LinkedList<?>();\n",
+        "correct": false
+      },
+      {
+        "answer": "\tVector<? extends Throwable> list = new Vector<Exception>();\n",
+        "correct": true
+      },
+      {
+        "answer": "\tSet<String> list = new TreeSet<String>();\n",
+        "correct": false
+      },
+      {
+        "answer": "\tList<?> list = new LinkedList<String>(); OO concepts\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Может ли enum имплементировать интерфейс?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tДа. Но все методы должны быть реализованы при создании экземпляров enum\n",
+        "correct": true
+      },
+      {
+        "answer": "\tНет. enum является final-классом и не может имплементировать интерфейсы.\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДа. Но только интерфейсы Cloneable, Serializable и Externalizable\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Как изменить размер массива внутри метода m класса B?\nclass B {\npublic void m(int[] arg) { \n}\n}\nclass Tester {\npublic static void main(String[] args) {\nB b = new B();\nint a[] = new int[10];\nb.m(a);\n}\n}\n",
+    "help": "Размер массива изменить невозможно\n----\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\targ.resize(100)\n",
+        "correct": false
+      },
+      {
+        "answer": "\targ = new int[100]\n",
+        "correct": false
+      },
+      {
+        "answer": "\targ.length = 100\n",
+        "correct": false
+      },
+      {
+        "answer": "\tИзменить размер массива arg невозможно \n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Пусть есть классы\nclass Car {\nint size;\nString color = “black”;\n\npublic Car(int size) {\nthis.size = size;\n}\n}\nи \nclass MiniCar extends Car { }\nКаким образом можно определить конструктор без параметров в классе MiniCar, если мы хотим, чтобы размер машины по умолчанию был 5, а цвет – красный (отметьте все возможные варианты)?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tpublic MiniCar() {this.color = “red”;this(5);}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic MiniCar() {this.color = “red”;super(5);}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic MiniCar() {super(5);this.color = “red”;}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic MiniCar() {this(5);this.color = “red”;}\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Измениться ли размер l, после вызова метода m?\nclass B {\npublic void m(final List arg) {\narg.add(\"a\");\n}\n}\n\nclass Tester {\npublic static void main(String[] args) {\nB b = new B();\nList l = new ArrayList();\nb.m(l);\n}\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tДа. В список будет добавлен элемент\n",
+        "correct": true
+      },
+      {
+        "answer": "\tНет. Код не скомпилируется\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет. Будет выброшено исключение FinalVariableModificationException\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет. В метод m передается копия списка\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Какой модификатор можно поставить у класса A?\n\npublic class B {\npublic static void main(String[] args) {\nclass A {}\n}\n}\n",
+    "help": "Класс A – локальный, внутри метода psvm\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tfinal\n",
+        "correct": true
+      },
+      {
+        "answer": "\tpublic\n",
+        "correct": false
+      },
+      {
+        "answer": "\tabstract\n",
+        "correct": true
+      },
+      {
+        "answer": "\tstatic\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Какой тип надо использовать вместо String, чтобы данный код скомпилировался?\nclass A {\npublic void m(String... args) { }\n}\nclass Tester {\npublic void m() {\nA a = new A();\na.m(1, 3L, 4.4f);\n}\n}\n",
+    "help": "Integer, Float, Double, Long extends Number и все от Object\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tLong\n",
+        "correct": false
+      },
+      {
+        "answer": "\tFloat\n",
+        "correct": false
+      },
+      {
+        "answer": "\tDouble\n",
+        "correct": false
+      },
+      {
+        "answer": "\tObject\n",
+        "correct": true
+      },
+      {
+        "answer": "\tNumber\n",
+        "correct": true
+      },
+      {
+        "answer": "\tInteger\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Дано следующее перечисление:\nenum Spice { NUTMEG, CINNAMON, CORIANDER, ROSEMARY; }\nКакие из вариантов откомпилируются без ошибок:\n",
+    "help": "Все объекты в java наследуются от Object, следовательно легко к нему приводятся\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tObject ob = new Object(); Spice sp = (Spice)object;\n",
+        "correct": true
+      },
+      {
+        "answer": "\tObject ob = new Object(); Spice sp = object; \n",
+        "correct": false
+      },
+      {
+        "answer": "\tSpice sp = Spice.NUTMEG; Object ob = (Object)sp; \n",
+        "correct": true
+      },
+      {
+        "answer": "\tSpice sp = Spice.NUTMEG; Object ob = sp; \n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Какие из следующих утверждений корректны?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tПеречисления могут содержать публичные методы\n",
+        "correct": true
+      },
+      {
+        "answer": "\tМожно создавать подклассы перечислений\n",
+        "correct": true
+      },
+      {
+        "answer": "\tПеречисления могут содержать данные с модификатором private\n",
+        "correct": true
+      },
+      {
+        "answer": "\tПеречисление enum должно декларировать, что оно расширяет java.lang.Enum\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "Переменные x и y – переменные типа (enum). Каов наилучший способ для проверки их на равенство?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tif(x.equals(y))\n",
+        "correct": true
+      },
+      {
+        "answer": "\tif(x.hashCode()==y. hashCode())\n",
+        "correct": false
+      },
+      {
+        "answer": "\tif(x.ordinal()==y.ordinal())\n",
+        "correct": false
+      },
+      {
+        "answer": "\tif(x.toString().equals(y.toString()))\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 10",
+    "description": "Может ли enum содержать абстрактные методы?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tДа. Но абстрактные методы должны быть переопределены при создании экземпляров enum\n",
+        "correct": true
+      },
+      {
+        "answer": "\tНет. enum является final-классом и не может содержать абстрактные методы.\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет. enum не может содержать любые методы, в том числе абстрактные. Примитивные типы и операторы\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Какой примитивный тип не может быть приведен к любому другому примитивному типу?\n",
+    "help": "char спокойно приводиться к int\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tint\n",
+        "correct": false
+      },
+      {
+        "answer": "\tlong\n",
+        "correct": false
+      },
+      {
+        "answer": "\tchar\n",
+        "correct": false
+      },
+      {
+        "answer": "\tboolean \n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Значения какого типа можно использовать в конструкции улучшенного for после символа «:»:?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tМассивы\n",
+        "correct": true
+      },
+      {
+        "answer": "\tКоллекции\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЛюбые типы\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЛюбые типы, имплементирующие Iterable\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Для чего используются классы-обертки примитивных типов (Integer, Long, и т.д.)?\n",
+    "help": "Обертки иммутабельны – т.е. при любом изменении создаеться новый объект\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tДля выполнения вычислений, т.к. типы-обертки повышают производительность вычислений\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДля изменения переданного параметра в методе, т.к. примитивы передаются по значению, и их нельзя изменить внутри метода, а обернутое значение можно\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДля возможности получать и присваивать значение null\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДля работы с коллекциями, т.к. коллекции в Java не умеют работать с примитивными типами\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Каков будет результат выполнения следующего кода?\n1. int x = 5 * 4 % 3;\n2. System.out.println(x);\n",
+    "help": "% - остаток от деления\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\t5 \n",
+        "correct": false
+      },
+      {
+        "answer": "\t3 \n",
+        "correct": false
+      },
+      {
+        "answer": "\t2 \n",
+        "correct": true
+      },
+      {
+        "answer": "\t6 \n",
+        "correct": false
+      },
+      {
+        "answer": "\tОшибка компиляции на строке 1 \n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Какой из операторов &= или &&= является допустимым?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\t&=\n",
+        "correct": false
+      },
+      {
+        "answer": "\tОба\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНи один\n",
+        "correct": true
+      },
+      {
+        "answer": "\t&&=\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Что выведет данная программа:\npublic class Test {\nstatic Integer i;\npublic static void main(String args[]) {\nSystem.out.println(i+\"?\");\n}\n}\n",
+    "help": "Инициализация обертки по умолчанию null\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tnull?\n",
+        "correct": true
+      },
+      {
+        "answer": "\t?\n",
+        "correct": false
+      },
+      {
+        "answer": "\t0?\n",
+        "correct": false
+      },
+      {
+        "answer": "\tБудет ошибка компиляции\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Что нужно сделать, чтобы программа вывела \"my class\"?\nclass MyClass {\nString name = \"my class\";\n\npublic MyClass(String name) {\nthis.name = name;\n}\n}\n\npublic static void main(String[] args) {\nMyClass c = new MyClass();\nSystem.out.println(c.name);\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tНеобходимо объявить переменную name как public\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНеобходимо объявить класс MyClass статическим\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНеобходимо добавить конструктор без параметров в MyClass\n",
+        "correct": true
+      },
+      {
+        "answer": "\tНеобходимо объявить MyClass статическим и добавить конструктор без параметров\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПрограмма корректна\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНеобходимо сделать все вышеперечисленное\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Какой из двух фрагментов кода предотвратит возникновение NullPointerException\nif (a != null && a.size > 0){ //фрагмент 1\nif (a != null & a.size > 0){//фрагмент 2\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tВторой\n",
+        "correct": false
+      },
+      {
+        "answer": "\tОба\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНи один\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПервый\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "Определите результат выполнения следующего кода, запущенного с помощью команды:\nJava HelloWorld hello world goodbye\npublic static class HelloWorld{\npublic static void main(String[] args){\nSystem.out.println(args[1]+args[2]);\n}\n}\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tВо время выполнения появится ArrayIndexOfBoundException\n",
+        "correct": false
+      },
+      {
+        "answer": "\tnullnull\n",
+        "correct": false
+      },
+      {
+        "answer": "\thello world\n",
+        "correct": false
+      },
+      {
+        "answer": "\tworldgoodbye\n",
+        "correct": false
+      },
+      {
+        "answer": "\tКод не скомпилируеться\n",
+        "correct": false
+      },
+      {
+        "answer": "\tworld goodbye\n",
+        "correct": false
+      },
+      {
+        "answer": "\thelloworld\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 10",
+    "description": "Каков будет результат выполнения следующего кода?\n3 int x1 = 50; x2 = 75;\n4 boolean b = x1>=x2;\n5 if (b=true){\n6 System.out.println(“Успех”);\n7 } else {\n8 System.out.println(“Неудача”);\n9 }\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tУспех\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНеудача\n",
+        "correct": false
+      },
+      {
+        "answer": "\tОшибка компиляции на строке 4\n",
+        "correct": false
+      },
+      {
+        "answer": "\tОшибка компиляции на строке 5 Declaration and Scoping\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Что напечатает данная программа:\npublic static void main(String args[]) {\nInteger a;\nSystem.out.println(a);\n}\n",
+    "help": "Локальные переменные должна быть определены\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tпрограмма не скомпилируется\n",
+        "correct": true
+      },
+      {
+        "answer": "\tnull\n",
+        "correct": false
+      },
+      {
+        "answer": "\tничего не напечатает\n",
+        "correct": false
+      },
+      {
+        "answer": "\t0\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Какое значение будет у переменной i после создания объекта?\npublic class A {\nprivate int i;\nstatic {\ni = 1;\n}\npublic A() {\ni = 2;\n}\n}\n",
+    "help": "Нестатическая переменная в статическом блоке\n----\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\t1\n",
+        "correct": false
+      },
+      {
+        "answer": "\t2\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЗначение не определено\n",
+        "correct": false
+      },
+      {
+        "answer": "\tКод не скомпилируется\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Корректна ли данная программа?\ninterface Developer {\nvoid writeCode(); \n}\n\nString devName = \"Petrov\";\nDeveloper dev = new Developer() {\npublic void writeCode() {\nSystem.out.println(\"writing java code by \"+devName);\n}\n};\ndev.writeCode();\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tНет, необходимо объявить класс, имплементирующий интерфейс Developer\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, необходимо объявить writeCode() в интерфейсе как public\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДа, корректна, и напечатает “Writing code by Petrov”\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, необходимо объявить переменную devName как final\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Какие модификаторы может иметь класс верхнего уровня?\n",
+    "help": "А также default и scriptfp\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tstatic\n",
+        "correct": false
+      },
+      {
+        "answer": "\tvirtual\n",
+        "correct": false
+      },
+      {
+        "answer": "\tfinal\n",
+        "correct": true
+      },
+      {
+        "answer": "\tprotected\n",
+        "correct": false
+      },
+      {
+        "answer": "\tabstract\n",
+        "correct": true
+      },
+      {
+        "answer": "\tpublic\n",
+        "correct": true
+      },
+      {
+        "answer": "\tprivate\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Пусть есть код:\nclass Super {\nstatic int a = 0;\n}\nclass Child extends Super {\nstatic int a = 1;\n\npublic static void main(String args[]) {\nint a = 2;\nSystem.out.println(a);\n}\n}\nКак можно обратиться к статической переменной a класса Child, чтобы вывести 1?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\ta\n",
+        "correct": false
+      },
+      {
+        "answer": "\tэто невозможно\n",
+        "correct": false
+      },
+      {
+        "answer": "\tChild.a\n",
+        "correct": true
+      },
+      {
+        "answer": "\tchild.a\n",
+        "correct": false
+      },
+      {
+        "answer": "\tthis.a\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Что напечатает данная программа:\npublic class Test {\nstatic Integer a;\n\npublic static void main(String args[]) {\nSystem.out.println(a);\n}\n}\n",
+    "help": "Будет определено значение по умолчанию - null\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tпрограмма не скомпилируется\n",
+        "correct": false
+      },
+      {
+        "answer": "\tничего не напечатает\n",
+        "correct": false
+      },
+      {
+        "answer": "\t0\n",
+        "correct": false
+      },
+      {
+        "answer": "\tnull\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Каким образом в Java определить константу PI?\n",
+    "help": "В Java нет модификатора constl\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tpublic static double PI = 3.14;\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic static const double PI = 3.14;\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic const double PI = 3.14;\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic static final double PI = 3.14;\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Что напечатает такая программа:\npublic class Test{\nstatic{\nSystem.out.print(“1”);\n}\n\nTest(){\nSystem.out.print(“2”);\n}\npublic static void main(String[] args){\nSystem.out.print(“3”);\n}\n}\n",
+    "help": "При выполнении psvm произойдет загрузка класса и выполниться статический блок\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\t2 1 3\n",
+        "correct": false
+      },
+      {
+        "answer": "\t3\n",
+        "correct": false
+      },
+      {
+        "answer": "\t1 3\n",
+        "correct": true
+      },
+      {
+        "answer": "\t1 2 3\n",
+        "correct": false
+      },
+      {
+        "answer": "\t2 3\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "Что напечатает данная программа?\n1public class WaterBottle{\n2private String brand;\n3private Boolean empty;\n4\n5public static void main(String[] args){\n6WaterBottle wb = new WaterBottle();\n7If (!wb.empty){\n8System.out.print(‘Brand = ’ + wb.brand);\n9}\n10}\n11}\n",
+    "help": "При выполнении psvm произойдет загрузка класса и выполниться статический блок\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tНичего не напечатает\n",
+        "correct": false
+      },
+      {
+        "answer": "\tBrand = null\n",
+        "correct": false
+      },
+      {
+        "answer": "\tОшибка компиляции на строке 8\n",
+        "correct": false
+      },
+      {
+        "answer": "\tОшибка компиляции на строке 7\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 10",
+    "description": "Какое значение будет у локальной переменной i в точке (1)?\nClass A{\nprivate int I = 1;\n\npublic void f(){\nint I;\n//1\n}\n}\n",
+    "help": "Локальную переменную необходимо инициализировать\n\n\n\n \nВиртуальная машина Java\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tКод не скомпелируеться\n",
+        "correct": false
+      },
+      {
+        "answer": "\t1\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЗначение не определено\n",
+        "correct": true
+      },
+      {
+        "answer": "\t0\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Какие опции JVM используются для конфигурации Young Generation?\n",
+    "help": "Xmn – the size of heap for the young generation\nXms – initial minimum heap size\nXmx – maximum heap suze\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tXMN\n",
+        "correct": true
+      },
+      {
+        "answer": "\tXMX\n",
+        "correct": false
+      },
+      {
+        "answer": "\tXMS\n",
+        "correct": false
+      },
+      {
+        "answer": "\tJurassic Generation\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Из каких основных сегментов состоит память JVM?\n",
+    "help": "Картинка\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tВсе вышеперечисленные\n",
+        "correct": true
+      },
+      {
+        "answer": "\tJava Stack Memory\n",
+        "correct": false
+      },
+      {
+        "answer": "\tPermanent Generation\n",
+        "correct": false
+      },
+      {
+        "answer": "\tHeap Memory\n",
+        "correct": false
+      },
+      {
+        "answer": "\tJVM Code\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Какой из приведенных загрузчиков классов сканирует стандартную библиотеку rt.jar?\n",
+    "help": "Bootstrap — реализован на уровне JVM и не имеет обратной связи со средой исполнения. Данным загрузчиком загружаются классы из директории $JAVA_HOME/lib. Т.е. всеми любимый rt.jar загружается именно базовым загрузчиком. Поэтому, попытка получения загрузчика у классов java.* всегда заканчиватся null'ом. Это объясняется тем, что все базовые классы загружены базовым загрузчиком, доступа к которому из управляемой среды нет.\n\nУправлять загрузкой базовых классов можно с помощью ключа -Xbootclasspath, который позволяет переопределять наборы базовых классов.\n\nSystem Classloader — системный загрузчик, реализованный уже на уровне JRE. В Sun JRE — это класс sun.misc.Launcher$AppClassLoader. Этим загрузчиком загружаются классы, пути к которым указаны в переменной окружения CLASSPATH.\n\nУправлять загрузкой системных классов можно с помощью ключа -classpath или системной опцией java.class.path.\n\nExtension Classloader — загрузчик расширений. Данный загрузчик загружает классы из директории $JAVA_HOME/lib/ext. В Sun JRE — это класс sun.misc.Launcher$ExtClassLoader.\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tApplication ClassLoader\n",
+        "correct": false
+      },
+      {
+        "answer": "\tBootstrap ClassLoader\n",
+        "correct": true
+      },
+      {
+        "answer": "\tExtension ClassLoader\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНи один из вышеперечисленных\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Если происходит переполнение кучи, какой тип ошибки сгенерирован?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tjava.lang.OutOfMemoryError\n",
+        "correct": true
+      },
+      {
+        "answer": "\tjava.lang.StackOverflowError\n",
+        "correct": false
+      },
+      {
+        "answer": "\tjava.lang.StackOverflowException\n",
+        "correct": false
+      },
+      {
+        "answer": "\tjava.lang.StackLargeError\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "В какой части кучи создаются новые объекты?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tTenured\n",
+        "correct": false
+      },
+      {
+        "answer": "\tEden/Keep Area\n",
+        "correct": true
+      },
+      {
+        "answer": "\tPerm Gen\n",
+        "correct": false
+      },
+      {
+        "answer": "\tSurvivor Space S0\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Какой тип ссылок (XXX) в Java описывается следующим контрактом: «Когда Garbage Collector определяет, что объект доступен только через XXX-ссылку, то объект сразу удаляется из памяти»?\n",
+    "help": "https://habrahabr.ru/post/169883/\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tPhantom Reference\n",
+        "correct": false
+      },
+      {
+        "answer": "\tStrong Reference (обыкновенные ссылки)\n",
+        "correct": false
+      },
+      {
+        "answer": "\tWeak Reference\n",
+        "correct": true
+      },
+      {
+        "answer": "\tSoft Reference\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Для каких опций выполняется условие, что значение первого параметра должно быть меньше значения второго для корректной работы JVM?\n",
+    "help": "Xmn – the size of heap for the young generation\nXms – initial minimum heap size\nXmx – maximum heap suze\nXss - thread stack size\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tXMS и XMX\n",
+        "correct": true
+      },
+      {
+        "answer": "\tXMN и XMX\n",
+        "correct": false
+      },
+      {
+        "answer": "\tXMN и XSS\n",
+        "correct": false
+      },
+      {
+        "answer": "\tXMS и XMN\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Какой из алгоритмов сборки мусора подходит под следующее описание: «Разработан специально для обработки больших куч в памяти (объемом больше 4 Гб) с минимальными паузами. Он разделяет пространство на большое количество мелких регионов»?\n",
+    "help": "Serial - GC  Последовательно выполняется minor GC и major GC. Эффективен на компьютерах с небольшим количеством (один/два) процессоров. Эффективен на компьютерах с большим количество виртуальных машин и запущенных JVM больше чем доступных процессоров\n\nParallel GC - несколько потоков по сборке young памяти, один поток для сборки old памяти\nнесколько потоков по сборке young и old памяти. Плюсы: Максимальная производительность. Минусы: Продолжительные паузы\nConcurrent Mark Sweep Collector - Несколько потоков по сборке мусора, сводит к минимуму перерывы из-за сборки мусора. Плюсы: Предсказуемость, Короткие паузы. Минусы: Снижение производительности.\nG1 - Сборка мусора в фоновом режиме, сводит к минимуму перерывы из-за сборки мусора. Плюсы: Предсказуемость, короткие паузы Подходит когда выделено очень много памяти (heap). Минусы: Снижение производительности. G1 рекомендуется, если (не обязательно все):\nНужна хорошая производительность\nПродолжительность пауз (<0.5-1s)\nМинимальная настройка\nРазмер «кучи» >5Gb\nЗанятость «кучи» >50%\nСкорость создания объектов серьезно варьируется\nФрагментация «кучи»\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tG1 Garbage Collector\n",
+        "correct": true
+      },
+      {
+        "answer": "\tConcurrent Mark Sweep Collector\n",
+        "correct": false
+      },
+      {
+        "answer": "\tParallel GC\n",
+        "correct": false
+      },
+      {
+        "answer": "\tSerial GC\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "На какие части физически разделена JVM Heap?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tYoung  Generation\n",
+        "correct": true
+      },
+      {
+        "answer": "\tOld Generation\n",
+        "correct": true
+      },
+      {
+        "answer": "\tCurrent Generation\n",
+        "correct": false
+      },
+      {
+        "answer": "\tPermament Generation\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 10",
+    "description": "Какой из перечисленных компонентов запрашивает память у операционной системы при старте приложения на Java?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tJRE\n",
+        "correct": false
+      },
+      {
+        "answer": "\tJNI\n",
+        "correct": false
+      },
+      {
+        "answer": "\tJVM\n",
+        "correct": true
+      },
+      {
+        "answer": "\tJDK\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 11",
+    "description": "Какие данные храняться в Java Stack Memory?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tЛокальные примитивные переменные\n",
+        "correct": true
+      },
+      {
+        "answer": "\tСтатические методы\n",
+        "correct": false
+      },
+      {
+        "answer": "\tСсылки на объекты в куче\n",
+        "correct": true
+      },
+      {
+        "answer": "\tНовые объекты\n",
+        "correct": false
+      },
+      {
+        "answer": "\tСтроковые константы\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 12",
+    "description": "Каков будет результат выполнения следующего фрагмента кода?\npublic class StrEquals{\npublic static void main(String[] args){\nString s1 = “hi”;\nString s2 = new String(“hi”);\nString s3 = “hi”;\nSystem.out.print(s1==s2);\nSystem.out.print(“\\\\”);\nSystem.out.print(s1==s3);\n}\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\ttrue\\false\n",
+        "correct": false
+      },
+      {
+        "answer": "\tfalse\\true\n",
+        "correct": true
+      },
+      {
+        "answer": "\tfalse\\false\n",
+        "correct": false
+      },
+      {
+        "answer": "\ttrue\\true\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос №13",
+    "description": "Какие из перечисленных процессов выполняются JVM автоматически.\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tОсвобождение памяти\n",
+        "correct": false
+      },
+      {
+        "answer": "\tСериализация\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДесериализация\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВыделение памяти\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВсе вышеперечисленные Generics\n",
+        "correct": true
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Объявлены два интерфейса:\ninterface BI { }\ninterface DI extends BI { }\nСледующие опции содержат объявления шаблонного класса X. Какое из определений содержит корректное описание параметра типа, являющегося верхней границей DI допустимых значений?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tclass X <T extends DI> { }\n",
+        "correct": false
+      },
+      {
+        "answer": "\tclass X <T super DI> { }\n",
+        "correct": false
+      },
+      {
+        "answer": "\tclass X <T extends ? & DI> { }\n",
+        "correct": false
+      },
+      {
+        "answer": "\tclass X <T implements DI> { }\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Какими из приведенных конструкций можно заменить //Stmt#1 в следующем фрагменте кода, чтобы программа осталось корректной?\nclass Base<T> { }\nclass Derived<T> { }\nclass Test {\npublic static void main(String[] args) \n// Stmt#1\n}\n}\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tDerived<Integer> b = new Derived<Integer>();\n",
+        "correct": true
+      },
+      {
+        "answer": "\tBase<Number> b = new Base<Number>();\n",
+        "correct": true
+      },
+      {
+        "answer": "\tBase<Integer> b = new Derived<Integer>();\n",
+        "correct": false
+      },
+      {
+        "answer": "\tDerived<Number> b = new Derived<Integer>();\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Какими из приведенных конструкций можно заменить //Stmt#1 в следующем фрагменте кода, чтобы программа осталась корректной?\nclass Base<T> { }\nclass Derived<T> { }\nclass Test {\npublic static void main(String[] args) {\n// Stmt#1\n}\n}\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tDerived<? super Number> b = new Derived<Integer>();\n",
+        "correct": false
+      },
+      {
+        "answer": "\tBase<? extends Number> b = new Base<Number>();\n",
+        "correct": true
+      },
+      {
+        "answer": "\tDerived<?> b = new Derived<Integer>();\n",
+        "correct": true
+      },
+      {
+        "answer": "\tBase<?> b = new Derived<Integer>();\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Замените XXX объявлением, которое позволит приведенному коду скомпилироваться без ошибок и предупреждений.\npublic void m1(XXX list) {\nNumber n = list.get(0);\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tList<? extends Number>\n",
+        "correct": true
+      },
+      {
+        "answer": "\tList<? super Number>\n",
+        "correct": false
+      },
+      {
+        "answer": "\tList<Number extends ?>\n",
+        "correct": false
+      },
+      {
+        "answer": "\tList<?>\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Для чего в Java был добавлен механизм Generics?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tДелают код более оптимизированным и понятным\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДобавляют стабильность в код за счет того, что большинство багов определяются в процессе исполнения\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДелают код быстрее\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДобавляют стабильность в код за счет того, что большинство багов определяются на этапе компиляции\n",
+        "correct": true
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Какие изменения необходимо внести в представленный класс, чтобы получить преимущества от использования Generics без изменения функциональности?\npublic class BookStore {\nMap map = new HashMap(); //1\npublic BookStore() {\nmap.put(new Book(\"A111\"), new Integer(10)); //2\n}\npublic int getNumberOfCopies(Book b) { //3\nInteger i = (Integer) map.get(b); //4\nreturn i == null ? 0 : i.intValue(); //5\n}\n}\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tЗаменить строку //1 на Map<Book, int> map = new HashMap<Book, int>();\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЗаменить строку //2 на map.put(new Book(“A111”, 10));\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЗаменить строку //1 на Map<Book, Integer> map = new TreeMap<Book, Integer>();\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЗаменить строку //3 на public Integer getNumberOfCopies(Book b)\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЗаменить строки //4 и //5 на return map.get(b);\n",
+        "correct": false
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Какие из приведенных объявлений метода позволят скомпилироваться и выполниться без ошибок и предупреждений следующему фрагменту кода? Все конструкции, скрытые за знаком /* … */, являются корректными.\ninterface Sink<T> {\nflush(T t);\n}\nSink<Object> s = /* … */\nCollection<String> cs = /* … */\nString str = writeAll(cs, s);\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tpublic static <T> T writeAll(Collection<T> coll, Sink<? super T> snk) { /* … */ }\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic static <T> T writeAll(Collection<T> coll, Sink<T> snk) { /* … */ }\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic static <T> T writeAll(Collection<? extends T> coll, Sink<? super T> snk) { /* … */ }\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic static <T> T writeAll(Collection<T> coll, Sink<? extends T> snk) { /* … */ }\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Какие из приведенных утверждений являются корректными для данного фрагмента кода?\nclass WildCard {\ninterface BI { }\ninterface DI extends BI { }\ninterface DDI extends DI { }\n\nstatic class C<T> { }\nstatic void foo(C<? super DI> arg) { }\n\npublic static void main(String[] args) {\nfoo(new C<BI>()); //1\nfoo(new C<DI>()); //2\nfoo(new C<DDI>()); //3\nfoo(new C()); //4\n}\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tCompilation Failed at //4\n",
+        "correct": false
+      },
+      {
+        "answer": "\tCompilation Failed at //3\n",
+        "correct": true
+      },
+      {
+        "answer": "\tCompilation Failed at //2\n",
+        "correct": false
+      },
+      {
+        "answer": "\tCompilation Failed at //1\n",
+        "correct": false
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "Какие из приведенных методов скомпилируются без ошибок? Shape – корректный non-final кдасс\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tpublic List<? Extends Shape>m4(List<? Extends Shape> strList){List<Shape> list = new ArrayList<>();list.add(new Shape());list.addAll(strList);return list;}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic void m5(ArrayList<? Extends Shape> strList){List<Shape> list = new ArrayList<>();list.add(new Shape());list.addAll(strList);}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic List<Shape> m3(ArrayList<? Extends Shape> strList){List<? extends Shape> list = new ArrayList<>();list.addAll(strList);return list;}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic void m6(ArrayList<Shape> strList){List<? extends Shape > list = new ArrayList<>();list.add(new Shape());strList.addAll(list);} Многопоточность\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Дана следующая программа:\nstatic StringBuffer sb = new StringBuffer();\nstatic class MyThread extends Thread {\npublic void run() {\nfor (int i=0;i<10000;i++) {\nsb.append(getName());\n}\n}\n}\npublic static void main(String[] args)\nthrows InterruptedException {\nMyThread t1 = new MyThread();\nMyThread t2 = new MyThread();\nt1.setName(\"1\"); t2.setName(\"2\");\nt1.start(); t2.start();\nt1.join(); t2.join();\nSystem.out.println(sb.toString().length());\n}\nКаков будет результат ее работы?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tПрограмма будет выводить 20000, если поместить sb.append() в блок synchronized\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПрограмма будет всегда выводить 20000\n",
+        "correct": true
+      },
+      {
+        "answer": "\tПрограмма в любом случае будет печатать случайные числа\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПрограмма будет выводить 20000, если заменить StringBuffer на StringBuilder\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Каков будет результат выполнения следующего кода:\nstatic class MyThread extends Thread {\npublic void run() {\nSystem.out.print(\"Thread \");\n}\n}\npublic static void main(String [] args) {\nMyThread t = new MyThread();\nt.start();\nSystem.out.print(\"one. \");\nt.start();\nSystem.out.print(\"two. \");\nSystem.out.print(\"Thread \");\n}\n",
+    "help": "Произойдет исключение IllegalThreadStateException в строке t.start();\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tРезультат работы не детерминирован.\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВо время выполнения произойдет исключение\n",
+        "correct": true
+      },
+      {
+        "answer": "\tКод не откомпилируется\n",
+        "correct": false
+      },
+      {
+        "answer": "\tThread one. Thread two.\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Что выведет данная программа?\nstatic class MyThread extends Thread {\npublic void run() {\nSystem.out.print(getName());\n}\n}\npublic static void main(String[] args) {\nMyThread thread1 = new MyThread();\nMyThread thread2 = new MyThread();\nthread1.setName(\"1\");\nthread2.setName(\"2\");\nthread1.start();\nthread2.start();\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\t12\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНичего не выведет\n",
+        "correct": false
+      },
+      {
+        "answer": "\t21\n",
+        "correct": false
+      },
+      {
+        "answer": "\tРезультат непредсказуем\n",
+        "correct": true
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Предположим, в потоке A вызывается метод b.wait(2000) для монитора блокировки b.\nПосле того, как данный метод завершится, когда поток A снова станет кандидатом на выполнение?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tПосле того, как в другом потоке будет вызван метод b.notifyAll(), или через 2 секунды\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЧерез 2 секунды после того, как в другом потоке будет вызван метод b.notifyAll()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЧерез 2 секунды после того, как блокировка объекта b будет освобождена\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПосле того, как блокировка объекта b будет освобождена, или через 2 секунды\n",
+        "correct": false
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Пусть есть следующий класс для банковского счета:\nclass A {\nprivate float balance;\npublic A (float balance) {\nthis.balance = balance;\n}\npublic A dec(float f) {\nreturn new A(this.balance-f);\n}\npublic A inc (float f) {\nreturn new A (this.balance+f);\n}\n}\nЯвляется ли данный класс потокобезопасным?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tДа, если пометить все методы как synchronized\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДа, если пометить метод withdraw() как synchronized\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, не является\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДа, является\n",
+        "correct": false
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Необходимо выводить имя выполняющегося потока через точку с запятой. \nСейчас в результате работы программы мы увидим такой вывод: \n1;2;;1;1;21;1;2;;1;;1;1;;2;2;2;\nЧто надо исправить в программе, чтобы все номера потоков были разделены знаком \";\"?\nstatic StringBuilder sb = new StringBuilder();\nstatic class MyThread extends Thread {\npublic void run() {\nfor (int i=0;i<100;i++) {\nsb.append(getName());\nsb.append(\";\");\n}\n}\n}\npublic static void main(String[] args)\nthrows InterruptedException {\nMyThread thread1 = new MyThread();\nMyThread thread2 = new MyThread();\nthread1.setName(\"1\");\nthread2.setName(\"2\");\nthread1.start();\nthread2.start();\nthread1.join();\nthread2.join();\nSystem.out.println(sb.toString());\n}\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tНеобходимо поместить тело цикла for в блок synchronized(this) {...}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНеобходимо использовать StringBuffer вместо StringBuilder\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНеобходимо поместить тело цикла for в блок synchronized(sb) {...}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНеобходимо пометить метод run как synchronized\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЭто невозможно сделать\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНеобходимо поместить строку System.out.println(sb.toString()); в блок synchronized\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Каким образом лучше всего завершить работу потока из другого потока?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tПоток, желающий завершить работу другого потока, должен использовать метод Thread.interrupt(), а убиваемый поток должен постоянно проверять Thread.isInterrupted\n",
+        "correct": true
+      },
+      {
+        "answer": "\tЛучше всего использовать Thread.stop\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПоток, желающий завершить работу другого потока, должен установить флаг, который убиваемый поток должен постоянно проверять\n",
+        "correct": false
+      },
+      {
+        "answer": "\tРекомендуется использовать метод Thread.interrupt(), который приводит к прекращению работы потока\n",
+        "correct": false
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Какие утверждения о порядке выполнения “происходит-прежде” (happens-before) корректны?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tРазблокировка монитора происходит-прежде каждой последующей блокировки того же монитора\n",
+        "correct": false
+      },
+      {
+        "answer": "\tКаждое действие в данном потоке происходит-прежде каждого действия в другом потоке, если эти потоки запущены последовательно\n",
+        "correct": false
+      },
+      {
+        "answer": "\tКаждое действие в данном потоке происходит-прежде каждого действия в этом же потоке, которое идет прежде в программном порядке\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЗапись в поле volatile происходит-прежде каждого последующего чтения того же самого volatile\n",
+        "correct": false
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "Дан следующий код:\nstatic int counter;\nstatic class MyThread extends Thread{\npublic void run(){\nfor(int i=0; i<10000;i++){\ncounter++;\n}\n}\n}\npublic static void main(String[] args) throw InterruptedException{\nMyThread t1 = new MyThread();\nMyThread t2 = new MyThread();\nt1.start(); t2.start();\nt1.join(); t2.join();\nSystem.out.println(counter);\n}\nНеобходимо, чтобы программа выводила число 2000 (каждый из двух потоков должен отработать по 10000 раз). Как это сделать?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tПометить тело цикла for в блок synchronized(MyThread.class){counter++}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПометить тело цикла в блок synchronized(this){counter++}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПрограмма всегда будет выводить 2000\n",
+        "correct": false
+      },
+      {
+        "answer": "\tИспользовать atomic-переменную counter\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПометить счетчик counter как volatile\tИспользовать переменную класса Integer в качестве счетчика\n",
+        "correct": false
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 10",
+    "description": "В чем преимущества использования объекта Lock вместо synchronized-блоков?\n",
+    "help": null,
+    "type": "EMPTY",
+    "answers": [
+      {
+        "answer": "\tЕсть возможность получить блокировку, только если никакой другой объект не получил блокировку, используя метод tryLock()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЕсть возможность иметь разные блокировки для пишущих и читающих потоков – ReadLock и WriteLock\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЕсть возможность временно передавать блокировку другому потоку, используя метод sendLock()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЕсть возможность временно приостановить блокировку, используя метод sleepLock(ms)\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 11",
+    "description": "Что напечатает данная программа?\nstatic class DoSomething impliments Runnable{\npublic void run(){\nSystem.out.println(“Do something”);\n}\n}\npublic static void main(String[] args)\nthrow InterruptedException{\nDoSomething r = new DoSomething();\nThread t = new Thread(r);\nt.start();\nt.join();\nSystem.out.print(“else”);\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tDo something else\n",
+        "correct": true
+      },
+      {
+        "answer": "\tРезультат непредсказуем\n",
+        "correct": false
+      },
+      {
+        "answer": "\tDo something\n",
+        "correct": false
+      },
+      {
+        "answer": "\telse\n",
+        "correct": false
+      },
+      {
+        "answer": "\telse Do something Исключения\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Имеется следующий код: \nclass SystemException extends Exception {}\nclass BusinessException extends Exception {}\nclass LocalException extends BusinessException {}\nПусть в родительском классе X определен следующий метод:\nvoid execute() throws BusinessException { ... }\nПусть есть класс Y, расширяющий класс X.\nКакие из следующих методов могут быть определены в классе Y?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tvoid execute() throws LocalException, BusinessException {…}\n",
+        "correct": true
+      },
+      {
+        "answer": "\tvoid execute() throws SystemException {…}\n",
+        "correct": false
+      },
+      {
+        "answer": "\tvoid execute() {…}\n",
+        "correct": true
+      },
+      {
+        "answer": "\tvoid execute() throws BusinessException {…}\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Имеется код:\nclass BusinessException extends Exception {}\nclass LocalException extends BusinessException {}\n\npublic void test() {\ntry {\nthrow new LocalException();\n} catch(BusinessException be) {\nSystem.out.print(\"1\");\n} catch(LocalException le) {\nSystem.out.print(\"2\");\n} finally {\nSystem.out.print(\"3\");\n}\n\nЧто будет выведено при выполнении метода test()?\n",
+    "help": "Error:(84, 11) java: exception ru.home.LocalException has already been caught\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\t13\n",
+        "correct": false
+      },
+      {
+        "answer": "\tкод не скомпилируется\n",
+        "correct": true
+      },
+      {
+        "answer": "\t23\n",
+        "correct": false
+      },
+      {
+        "answer": "\t1\n",
+        "correct": false
+      },
+      {
+        "answer": "\t123\n",
+        "correct": false
+      },
+      {
+        "answer": "\t2\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Имеется код:\npublic static void main(String[] args) {\nString city = null;\nif (city.equals(\"Moscow\")) {\nSystem.out.print(\"true\");\n} else {\nSystem.out.print(\"false\");\n} finally {\nSystem.out.print(\"finally\");\n}\n}\nЧто будет напечатано в результате его выполнения?\n",
+    "help": "finally без try\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tfalse\n",
+        "correct": false
+      },
+      {
+        "answer": "\tfalsefinally\n",
+        "correct": false
+      },
+      {
+        "answer": "\tкод не скомпилируется\n",
+        "correct": true
+      },
+      {
+        "answer": "\tfinally\n",
+        "correct": false
+      },
+      {
+        "answer": "\tfinally, за которым будет следовать стектрейс NullPointerException\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Пусть есть метод, порождающий исключение:\npublic void test() throws BusinessException {};\nНеобходимо ли вызывать этот метод в блоке try catch?\npublic callTest() throws SystemException {\ntry {\ntest();\n} catch(BusinessException e) {\n}\n}\n",
+    "help": "SystemException наследуется от RuntimeException. Поэтому только RuntimeException и SystemException.\n",
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tНет, если BusinessException унаследован от Exception\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, если BusinessException унаследован от RuntimeException\n",
+        "correct": true
+      },
+      {
+        "answer": "\tНет, это ни в каком случае не требуется\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, если BusinessException унаследован от SystemException\n",
+        "correct": true
+      },
+      {
+        "answer": "\tДа, это в любом случае необходимо\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Пусть есть такой код:\npublic class Test {\npublic static void main(String args[]) throws Exception {\ntry {\nthrow new FirstException();\n} finally {\nthrow new SecondException();\n}\n}\n}\n\nclass FirstException extends Exception {}\nclass SecondException extends Exception {}\nКакое исключение будет выброшено в методе main()?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tFirstException\n",
+        "correct": false
+      },
+      {
+        "answer": "\tSecondException, при этом FirstException будет потерян\n",
+        "correct": true
+      },
+      {
+        "answer": "\tоба исключения одновременно\n",
+        "correct": false
+      },
+      {
+        "answer": "\tSecondException, при этом можно будет получить доступ к FirstException методом getCause()\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Что произойдет в результате выполнения такой программы?\npublic class Runner {\nprivate void run() {\ntry {\nrun();\n} catch (Exception e) {\nSystem.out.print(\"exception,\");\n}\nSystem.out.print(\"finished,\");\n}\n\npublic static void main(String[] args) {\nnew Runner().run();\nSystem.out.println(\"done\");\n}\n}\n",
+    "help": "Рекурсивное выполнение метода run()\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tБудет напечатано exception,done\n",
+        "correct": false
+      },
+      {
+        "answer": "\tБудет напечатано exception,finished,done\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПрограмма завершит работу с исключением OutOfMemoryError\n",
+        "correct": false
+      },
+      {
+        "answer": "\tБудет напечатано exception,finished,\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПрограмма не скомпилируется\n",
+        "correct": false
+      },
+      {
+        "answer": "\tБудет напечатано finished,done\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПрограмма завершит работу с исключением StackOverflowError\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Какие исключения может выбрасывать метод service(), определенный следующим образом:\npublic void service();\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tникакие\n",
+        "correct": false
+      },
+      {
+        "answer": "\tException\n",
+        "correct": false
+      },
+      {
+        "answer": "\tсовершенно любые\n",
+        "correct": false
+      },
+      {
+        "answer": "\tThrowable\n",
+        "correct": false
+      },
+      {
+        "answer": "\tRuntimeException\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Пусть у нас есть классы\nclass A {\npublic void calculate() throws MyException;\n}\n\nclass B extends A {\n}\nИ исключения\nclass MyException extends Exception {}\nclass SubException extends MyException {}\nclass YourException extends Exception {}\nКакие определения метода calculate() в классе B не вызовут ошибки компиляции:\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tpublic void calculate() throws MyException {};\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic void calculate() throws SubException {};\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic void calculate() throws YourException {};\n",
+        "correct": true
+      },
+      {
+        "answer": "\tpublic void calculate() {};\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic void calculate() throws Exception {};\n",
+        "correct": true
+      },
+      {
+        "answer": "\tpublic void calculate() throws MyException, YourException {}; \n",
+        "correct": true
+      },
+      {
+        "answer": "\tpublic void calculate() throws MyException {};\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 9",
+    "description": "Пусть есть класс Mouse;\npublic class Mouse{\npublic String name;\n\npublic void run(){\ntry{\nname.toString();\nSystem.out.print(“1”);\n} catch (NullPointerException e){\nSystem.out.print(“2”);\nthrow e;\n}\nSystem.out.print(“3”)\n}\n\npublic static void main(String[] args){\nnew Mouse().run();\nSystem.out.print(“4”);\n}\n}\nЧто будет напечатано в результате выполнения?\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tСтек вызовов для NullPointerException\n",
+        "correct": true
+      },
+      {
+        "answer": "\t4\n",
+        "correct": false
+      },
+      {
+        "answer": "\t2\n",
+        "correct": true
+      },
+      {
+        "answer": "\t1\n",
+        "correct": false
+      },
+      {
+        "answer": "\t3\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 10",
+    "description": "Как будет выполняться код после возникновения исключения в строке 1:\ntry{\nthrow new IOException();//1\n} catch (IOException ex){\nthrow new IOException();//2\n} catch (Exception ex){\n//3\n} finally{\n//4\n}\n//5\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\t2 и передача исключения IOException из строки 2 выше\n",
+        "correct": false
+      },
+      {
+        "answer": "\t2, 4 и передача исключения IOException из строки 2 выше\n",
+        "correct": false
+      },
+      {
+        "answer": "\t2, 3, 4, 5\n",
+        "correct": false
+      },
+      {
+        "answer": "\t2, 4, 5\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 11",
+    "description": "Определено исключение BusinessException;\nclass BusinessException extends Exception{}\nМожно ли передавать в исключение дополнительную информацию о причине его возникновения?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tВозможно, но только если унаследовать исключение от RuntimeException\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВозможно, если к классу исключения добавить сеттеры, принимающие дополнительную информацию\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, это не возможно\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВозможно, если объявить в исключении public поля\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВозможно, если определить конструктор, принимающий дополнительную информацию как параметры\n",
+        "correct": true
+      },
+      {
+        "answer": "---\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 12",
+    "description": "Если скомпилировать и вызвать метод m, что произойдет с исключением из строки 1;\npublic void m() throws IOException{\ntry{\nthrow new IOException();//1\n} catch (IOException ex){\nthrow new IOException();//2\n} cacth (Exception ex){\n\n} finally{\n\n}\n}\n",
+    "help": null,
+    "type": "MULTIPLE",
+    "answers": [
+      {
+        "answer": "\tОно будет сохранено в глобальный список исключений \n",
+        "correct": false
+      },
+      {
+        "answer": "\tОно будет передано в метод, который вызвал метод m()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tОно будет утеряно\n",
+        "correct": true
+      },
+      {
+        "answer": "\tОно будет помещено внутрь исключения в строке 2 Сериализация\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 1",
+    "description": "Каков будет результат выполнения следующего фрагмента кода?\npublic class A implements Serializable {\ntransient int a = 7;\nstatic int b = 9;\n}\npublic class B implements Serializable {\npublic static void main(String[] args) {\nA a = new A();\ntry {\nObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(“test.ser”));\nos.writeObject(a);\nos.close();\nSystem.out.print(a.b + “ “);\n\nObjectInputStream is = new ObjectInputStream(new FileInputStream(“test.ser”));\nA s2 = (A) is.readObject();\nis.close();\nSystem.out.println(s2.a + “ “ + s2.b);\n} catch (Exception ex) {\nex.printStackTrace();\n}\n}\n}\n",
+    "help": "После десериализации так как a transient то значение будет по умолчанию 0\n----\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\t9 7 9\n",
+        "correct": false
+      },
+      {
+        "answer": "\t9 0 0\n",
+        "correct": false
+      },
+      {
+        "answer": "\t0 0 0\n",
+        "correct": false
+      },
+      {
+        "answer": "\t9 0 9\n",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 2",
+    "description": "Какие из приведенных утверждений верны в контексте сериализации объектов в Java?\n",
+    "help": "Для того чтобы сериализовать объект с ссылками на другой объект, ссылаемые объекты должны быть сериализуемы иначе transient и при десериализации сслыки будут на null.\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tИнтерфейс Serializable объявляет два метода: readObject() и writeObject(). Для поддержки сериализации в произвольном классе необходимо наследовать интерфейс Serializable и переопределить указанные методы\n",
+        "correct": false
+      },
+      {
+        "answer": "\tПри сериализации объекта атрибуты класса, объявленные с модификатором transient, не будут сериализованы (следовательно, их значения будут утрачены после десериализации)\n",
+        "correct": true
+      },
+      {
+        "answer": "\tЕсли попытаться сериализовать или сохранить на диск объект, который не реализует интерфейс Externalizable, то будет сгенерировано исключение NotExternalizableException\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЕсли сериализовать объект, имеющий ссылки на другие объекты, то механизм сериализации также добавит эти объекты в поток сериализованных байтов\n",
+        "correct": false
+      },
+      {
+        "answer": "\tИнтерфейс Externalizable является интерфейсом-маркером: пустой интерфейс, который не содержит определения методов\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 3",
+    "description": "Externalizable класс должен обязательно выполнять следующие условия:\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tНаследовать интерфейс java.io.Externalizable\n",
+        "correct": false
+      },
+      {
+        "answer": "\tРеализовывать метод readExternal() для чтения данных из потока и восстановления состояния объекта\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВсе вышеперечисленные\n",
+        "correct": true
+      },
+      {
+        "answer": "\tИметь открытый конструктор без параметров\n",
+        "correct": false
+      },
+      {
+        "answer": "\tРеализовывать метод writeExternal() для сохранения состояния объекта\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 4",
+    "description": "Что из перечисленного является процессом извлечения/восстановления состояния объекта из потока?\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tСериализация\n",
+        "correct": false
+      },
+      {
+        "answer": "\tФильтрация файла\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНичего из перечисленного\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДесериализация\n",
+        "correct": true
+      },
+      {
+        "answer": "\tЗакрытие потока данных\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 5",
+    "description": "Дан следующий фрагмент кода:\npublic class Data implements Serializable {\npublic static String f1;\npublic static transient int f2;\npublic transient boolean f3;\npublic final static String f4 = “4”;\npublic String f5 = “5”;\n}\nData d = new Data();\nd.f1 = “f1”;\nd.f2 = “f2”;\nd.f3 = true;\nКакие поля класса останутся неизменными, если объект класса сериализовать, а после десериализовать в другой JVM?\n",
+    "help": "Спецификаторы transient и static означают, что поля, помеченные ими, не могут быть предметом сериализации, но существует различие в десериализации. Так, поле со спецификатором transient после десериализации получает значение по умолчанию, соответствующее его типу (объектный тип всегда инициализируется по умолчанию значением null), а поле со спецификатором static получает значение по умолчанию в случае отсутствия в области видимости объектов своего типа, а при их наличии получает значение, которое определено для существующего объекта.\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tf1, f4, f5\n",
+        "correct": false
+      },
+      {
+        "answer": "\tf4, f5\n",
+        "correct": true
+      },
+      {
+        "answer": "\tf3, f5\n",
+        "correct": false
+      },
+      {
+        "answer": "\tf5\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 6",
+    "description": "Имеет ли программист возможность вносить изменения в механизм сериализации (переопределять процесс сериализации) в Java?\n",
+    "help": "interface Externalizable extends Serializable {\npublic void writeExternal(ObjectOutput out)\nthrows IOException;\npublic void readExternal(ObjectInput in)\nthrows IOException, java.lang.ClassNotFoundException;\n}\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tДа, наследовать интерфейс Externalizable и переопределить методы writeExternal() и readExternal()\n",
+        "correct": true
+      },
+      {
+        "answer": "\tНет верных ответов\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДа, наследовать интерфейс Serializable и добавить методы writeExternal() и readExternal()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tНет, процесс сериализации строго прописан в системных библиотеках\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 7",
+    "description": "Каков будет результат выполнения следующего фрагмента кода?\npublic class A {\npublic A() { System.out.println(“A”); }\n}\npublic class B extends A implements Serializable {\npublic B() { System.out.println(“B”); }\n}\npublic class Test {\npublic static void main(String[] args) {\nB b = new B();\nObjectOutputStream save = new ObjectOutputStream(new FileOutputStream(“data”));\nsave.writeObject(b);\nsave.flush();\n\nObjectInputStream restore = new ObjectInputStream(new FileInputStream(“data”));\nB z = (B) restore.readObject();\n}\n}\n",
+    "help": "Поэтапно: вызов конструктора базового класса, вызов конструктора, сериалиация, десиарилизация, вызов конструктора базового класса, так как class A не сериализуеться. Если бы была бы сериализация A, то конструктор не вызывался и было A B\n",
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tA B\n",
+        "correct": false
+      },
+      {
+        "answer": "\tB B\n",
+        "correct": false
+      },
+      {
+        "answer": "\tA B A\n",
+        "correct": true
+      },
+      {
+        "answer": "\tA B A B\n",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "section": null,
+    "number": "Вопрос № 8",
+    "description": "Каков будет результат выполнения следующего фрагмента кода?\nclass A{}\npublic class B implements Serializable{\nA a = new A();\npublic static void main(String[] args){\nB b = new B();\ntry{\nFileOutputStream fs = new FileOutputStream(“b.ser”);\nObjectOutputStream os = new ObjectOutputStream(fs);\nos.writeObject(b);\nos.close();\n} catch (Exception ex){\nex.printStackTrace();\n}\n}\n}\n",
+    "help": null,
+    "type": "SINGLE",
+    "answers": [
+      {
+        "answer": "\tВыполниться без ошибок, объект класса А будет сериализован\n",
+        "correct": false
+      },
+      {
+        "answer": "\tjava.io.NotSerializableException; Because class A is not Serializable\n",
+        "correct": true
+      },
+      {
+        "answer": "\tCompilation Failed; Because class A is not Serializable\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВыполниться без ошибок, но объект класса А не будет сериализован\n",
+        "correct": false
+      }
+    ]
+  }
+]

@@ -3,6 +3,7 @@ package ru.sbt.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.sbt.model.Answer;
+import ru.sbt.model.AnswerType;
 import ru.sbt.model.Question;
 
 import java.io.BufferedReader;
@@ -37,15 +38,15 @@ public class QuizUtils {
     }
 
     public static List<Question> parse(String text) {
-        List<Question> questions = new ArrayList<>();
-        Question question;
-        String[] quastions = text.split("Вопрос ");
-        for (String quastion : quastions) {
-            question = new Question();
-            String[] lines = quastion.split("\n");
+        List<Question> questionResults = new ArrayList<>();
+        Question questionResult;
+        String[] questions = text.split("Вопрос ");
+        for (String question : questions) {
+            questionResult = new Question();
+            String[] lines = question.split("\n");
             for (int i = 0; i < lines.length; i++) {
                 if (lines[i].startsWith("№")) {
-                    question.setNumber("Вопрос " + lines[i]);
+                    questionResult.setNumber("Вопрос " + lines[i]);
                 }
                 if (lines[i].startsWith("<")) {
                     i++;
@@ -54,10 +55,9 @@ public class QuizUtils {
                         description += lines[i] + "\n";
                         i++;
                     }
-                    question.setDescription(description);
+                    questionResult.setDescription(description);
                 }
                 if (lines[i].startsWith("-") || lines[i].startsWith("x")) {
-                    String type = lines[i];
                     String questionValue = "";
                     while (i + 1 < lines.length && !(lines[i + 1].startsWith("-") ||
                             lines[i + 1].startsWith("x") || lines[i + 1].startsWith("!"))) {
@@ -68,7 +68,7 @@ public class QuizUtils {
                     Answer answer = new Answer();
                     answer.setAnswer(questionValue.substring(1));
                     answer.setCorrect(questionValue.startsWith("x"));
-                    question.getAnswerVariants().add(answer);
+                    questionResult.getAnswers().add(answer);
                 }
                 if (lines[i].startsWith("!")) {
                     String help = "";
@@ -76,12 +76,24 @@ public class QuizUtils {
                         help += lines[i] + "\n";
                         i++;
                     }
-                    question.setHelp(help.substring(1));
+                    questionResult.setHelp(help.substring(1));
                     break;
                 }
             }
-            questions.add(question);
+            long countCorrectAnswers = questionResult.getAnswers()
+                    .stream()
+                    .filter(Answer::isCorrect)
+                    .count();
+            if (countCorrectAnswers > 1) {
+                questionResult.setType(AnswerType.MULTIPLE);
+            } else if (countCorrectAnswers == 1) {
+                questionResult.setType(AnswerType.SINGLE);
+            } else {
+                questionResult.setType(AnswerType.EMPTY);
+            }
+
+            questionResults.add(questionResult);
         }
-        return questions;
+        return questionResults;
     }
 }
