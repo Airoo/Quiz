@@ -3,8 +3,8 @@ package ru.sbt.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import ru.sbt.model.AnswerVariant;
-import ru.sbt.model.QuizeQuastion;
+import ru.sbt.model.Answer;
+import ru.sbt.model.Question;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,10 +14,10 @@ import java.util.List;
  * Контроллер для "QuizView"
  */
 public class QuizViewController {
-    private Controller mainApp;
-    private QuizeQuastion quizeQuastion;
+    private Main mainApp;
+    private Question question;
     @FXML
-    private Label question;
+    private Label questionLabel;
     @FXML
     private Label answersCount;
     @FXML
@@ -49,7 +49,7 @@ public class QuizViewController {
     private Button bCheck;
 
     public QuizViewController() {
-        question = new Label("");
+        questionLabel = new Label("");
         answersCount = new Label("");
         check = new Label("");
         rbGroup = new ToggleGroup();
@@ -88,7 +88,7 @@ public class QuizViewController {
 //        rbGroup.getToggles().remove(rbG);
 //    }
 
-    public void setMainApp(Controller mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -155,12 +155,12 @@ public class QuizViewController {
 
     @FXML
     private void bHelp() {
-        check.setText(quizeQuastion.getHelp());
-        List<AnswerVariant> answerVariants = quizeQuastion.getAnswerVariants();
+        check.setText(question.getHelp());
+        List<Answer> answerVariants = question.getAnswerVariants();
         for (int i = 0; i < rB.length; i++) {
             rB[i].setSelected(false);
-            for (AnswerVariant answerVariant : answerVariants) {
-                if (rB[i].getText().equals(answerVariant.getQuastion()) && answerVariant.isAnswer()) {
+            for (Answer answerVariant : answerVariants) {
+                if (rB[i].getText().equals(answerVariant.getAnswer()) && answerVariant.isCorrect()) {
                     rB[i].setSelected(true);
                 }
             }
@@ -170,11 +170,11 @@ public class QuizViewController {
 
     @FXML
     private void bCheck() {
-        List<AnswerVariant> answerVariants = quizeQuastion.getAnswerVariants();
+        List<Answer> answerVariants = question.getAnswerVariants();
         int countAnswers = 0;
-        List<AnswerVariant> answers = new ArrayList<>();
-        for (AnswerVariant answerVariant : answerVariants) {
-            if (answerVariant.isAnswer()) {
+        List<Answer> answers = new ArrayList<>();
+        for (Answer answerVariant : answerVariants) {
+            if (answerVariant.isCorrect()) {
                 answers.add(answerVariant);
                 countAnswers++;
             }
@@ -188,8 +188,8 @@ public class QuizViewController {
 
         if (answers.size() == selectedRadioButtons.size()) {
             for (RadioButton radioButton : selectedRadioButtons) {
-                for (AnswerVariant answerVariant : answers) {
-                    if (radioButton.getText().equals(answerVariant.getQuastion())) {
+                for (Answer answerVariant : answers) {
+                    if (radioButton.getText().equals(answerVariant.getAnswer())) {
                         countAnswers--;
                     }
                 }
@@ -218,17 +218,17 @@ public class QuizViewController {
     /**
      * Метод для наполнения страницы
      */
-    public void showQuiz(QuizeQuastion quizeQuastion) {
-        this.quizeQuastion = quizeQuastion;
-        question.setText(quizeQuastion.getQuastionDescription());
-        question.setVisible(true);
+    public void showQuiz(Question question) {
+        this.question = question;
+        this.questionLabel.setText(question.getDescription());
+        this.questionLabel.setVisible(true);
         bNext.setDisable(true);
-        Collections.shuffle(quizeQuastion.getAnswerVariants());
-        List<AnswerVariant> answerVariants = quizeQuastion.getAnswerVariants();
-        System.out.println(quizeQuastion);
+        Collections.shuffle(question.getAnswerVariants());
+        List<Answer> answerVariants = question.getAnswerVariants();
+        System.out.println(question);
         int count = 0;
-        for (AnswerVariant answerVariant : answerVariants) {
-            if (answerVariant.isAnswer()) {
+        for (Answer answerVariant : answerVariants) {
+            if (answerVariant.isCorrect()) {
                 count++;
             }
         }
@@ -245,12 +245,12 @@ public class QuizViewController {
         System.out.println(">>>>>>>>>>>>>>" + count);
         check.setText("");
         for (int i = 0; i < 7; i++) {
-            if (i >= quizeQuastion.getAnswerVariants().size()) {
+            if (i >= question.getAnswerVariants().size()) {
                 rB[i].setText("");
                 rB[i].setSelected(false);
                 rB[i].setVisible(false);
             } else {
-                rB[i].setText(quizeQuastion.getAnswerVariants().get(i).getQuastion());
+                rB[i].setText(question.getAnswerVariants().get(i).getAnswer());
                 rB[i].setSelected(false);
                 rB[i].setVisible(true);
             }

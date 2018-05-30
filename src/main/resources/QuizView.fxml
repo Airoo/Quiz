@@ -30,7 +30,7 @@
             <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label fx:id="question" alignment="TOP_LEFT"  text="Label" wrapText="true">
+            <Label fx:id="questionLabel" alignment="TOP_LEFT"  text="Label" wrapText="true">
                <font>
                   <Font size="13.0" />
                </font>

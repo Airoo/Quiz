@@ -3,16 +3,13 @@ package ru.sbt.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
-/**
- * Контроллер для "Menu"
- */
 public class MenuController {
 
-    private Controller mainApp;
+    private Main mainApp;
     @FXML
     private MenuItem mIRestart;
 
-    public void setMainApp(Controller mainApp) {
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 

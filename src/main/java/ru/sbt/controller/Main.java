@@ -6,23 +6,18 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import ru.sbt.model.QuizeQuastion;
-import ru.sbt.service.QuizeServise;
+import ru.sbt.model.Question;
+import ru.sbt.service.Loader;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Контроллер
- */
-@Component
-public class Controller extends Application {
-    @Autowired
-    private QuizeServise quizeServise = new QuizeServise();
-    private List<QuizeQuastion> quizeQuastions;
+public class Main extends Application {
+    private Loader loader = new Loader();
+    private Importer importer = new Importer();
+
+    private List<Question> questions;
     private Stage primaryStage;
     private BorderPane rootLayout;
     private QuizViewController view;
@@ -49,7 +44,7 @@ public class Controller extends Application {
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller.class.getResource("/Menu.fxml"));
+            loader.setLocation(Main.class.getResource("/Menu.fxml"));
             rootLayout = (BorderPane) loader.load();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -69,7 +64,7 @@ public class Controller extends Application {
     private void showLoadView() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller.class.getResource("/LoadView.fxml"));
+            loader.setLocation(Main.class.getResource("/LoadView.fxml"));
             AnchorPane loadView = (AnchorPane) loader.load();
             rootLayout.setCenter(loadView);
             LoadViewController viewController = loader.getController();
@@ -88,7 +83,7 @@ public class Controller extends Application {
         attempt = attempt + 1;
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller.class.getResource("/QuizView.fxml"));
+            loader.setLocation(Main.class.getResource("/QuizView.fxml"));
             AnchorPane quizView = (AnchorPane) loader.load();
             rootLayout.setCenter(quizView);
             QuizViewController viewController = loader.getController();
@@ -115,10 +110,10 @@ public class Controller extends Application {
      * @throws Exception если файл не найден
      */
     public void loadQuiz() throws Exception {
-        quizeQuastions = quizeServise.getAllQuize();
+        questions = loader.load(importer.getFilePath());
         //TODO исправить баг с первым нулевым илементом
-        quizeQuastions.remove(0);
-        Collections.shuffle(quizeQuastions);
+        questions.remove(0);
+        Collections.shuffle(questions);
         showQuizView();
     }
 
@@ -129,11 +124,11 @@ public class Controller extends Application {
      * @throws QuizeException если тест вышел за пределы
      */
     private void showQuiz(int index) {
-		view.setProgress(currentIndex / (double) quizeQuastions.size());
-		if (index < quizeQuastions.size())
-			view.showQuiz(quizeQuastions.get(currentIndex));
+		view.setProgress(currentIndex / (double) questions.size());
+		if (index < questions.size())
+			view.showQuiz(questions.get(currentIndex));
 		else
-			throw new QuizeException("Тест вышел за прелелы: " + index + " из " + quizeQuastions.size());
+			throw new QuizeException("Тест вышел за прелелы: " + index + " из " + questions.size());
     }
 
     /**
@@ -142,7 +137,7 @@ public class Controller extends Application {
      * @param pick is the answer given for the last question
      */
     public void stepQuiz(String pick) {
-		if (currentIndex < quizeQuastions.size()){
+		if (currentIndex < questions.size()){
             currentIndex = currentIndex + 1;
 			showQuiz(currentIndex);
 		} else {

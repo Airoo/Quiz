@@ -1,16 +1,10 @@
-package ru.sbt.helpers;
+package ru.sbt.controller;
 
 import javafx.stage.FileChooser;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import ru.sbt.model.QuizeQuastion;
 
 import java.io.File;
-import java.util.List;
 
-@Component
 public class Importer {
-
     public String getFilePath() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Import Quiz");
