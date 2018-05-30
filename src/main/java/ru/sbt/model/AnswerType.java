@@ -1,5 +1,5 @@
 package ru.sbt.model;
 
 public enum AnswerType {
-    SINGLE, MULTIPLE;
+    SINGLE, MULTIPLE, EMPTY;
 }

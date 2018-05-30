@@ -14,7 +14,7 @@ public class Question {
     private String description;
     private String help;
     private AnswerType type;
-    private List<Answer> answerVariants = new ArrayList<>();
+    private List<Answer> answers = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -24,7 +24,7 @@ public class Question {
                 ", description='" + description + '\'' +
                 ", help='" + help + '\'' +
                 ", type=" + type +
-                ", answerVariants=" + answerVariants +
+                ", answers=" + answers +
                 '}';
     }
 }

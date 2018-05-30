@@ -10,10 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Контроллер для "QuizView"
- */
-public class QuizViewController {
+public class QuizView {
     private Main mainApp;
     private Question question;
     @FXML
@@ -48,7 +45,7 @@ public class QuizViewController {
     @FXML
     private Button bCheck;
 
-    public QuizViewController() {
+    public QuizView() {
         questionLabel = new Label("");
         answersCount = new Label("");
         check = new Label("");
@@ -68,33 +65,10 @@ public class QuizViewController {
         rB[6] = rbG;
     }
 
-//    private void aloneRadioButton() {
-//        rbA.setToggleGroup(rbGroup);
-//        rbB.setToggleGroup(rbGroup);
-//        rbC.setToggleGroup(rbGroup);
-//        rbD.setToggleGroup(rbGroup);
-//        rbE.setToggleGroup(rbGroup);
-//        rbF.setToggleGroup(rbGroup);
-//        rbG.setToggleGroup(rbGroup);
-//    }
-//
-//    private void severalRadioButtons() {
-//        rbGroup.getToggles().remove(rbA);
-//        rbGroup.getToggles().remove(rbB);
-//        rbGroup.getToggles().remove(rbC);
-//        rbGroup.getToggles().remove(rbD);
-//        rbGroup.getToggles().remove(rbE);
-//        rbGroup.getToggles().remove(rbF);
-//        rbGroup.getToggles().remove(rbG);
-//    }
-
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
-    /**
-     * Листнер
-     */
     @FXML
     private void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getText()) {
@@ -133,9 +107,6 @@ public class QuizViewController {
         }
     }
 
-    /**
-     * Метод для отображения нажатой кнопки
-     */
     private void rb(RadioButton pressed) {
         if (pressed.isVisible()) {
             pressed.setSelected(true);
@@ -156,7 +127,7 @@ public class QuizViewController {
     @FXML
     private void bHelp() {
         check.setText(question.getHelp());
-        List<Answer> answerVariants = question.getAnswerVariants();
+        List<Answer> answerVariants = question.getAnswers();
         for (int i = 0; i < rB.length; i++) {
             rB[i].setSelected(false);
             for (Answer answerVariant : answerVariants) {
@@ -170,7 +141,7 @@ public class QuizViewController {
 
     @FXML
     private void bCheck() {
-        List<Answer> answerVariants = question.getAnswerVariants();
+        List<Answer> answerVariants = question.getAnswers();
         int countAnswers = 0;
         List<Answer> answers = new ArrayList<>();
         for (Answer answerVariant : answerVariants) {
@@ -215,16 +186,13 @@ public class QuizViewController {
         mainApp.stepQuiz(picked);
     }
 
-    /**
-     * Метод для наполнения страницы
-     */
     public void showQuiz(Question question) {
         this.question = question;
         this.questionLabel.setText(question.getDescription());
         this.questionLabel.setVisible(true);
         bNext.setDisable(true);
-        Collections.shuffle(question.getAnswerVariants());
-        List<Answer> answerVariants = question.getAnswerVariants();
+        Collections.shuffle(question.getAnswers());
+        List<Answer> answerVariants = question.getAnswers();
         System.out.println(question);
         int count = 0;
         for (Answer answerVariant : answerVariants) {
@@ -245,21 +213,18 @@ public class QuizViewController {
         System.out.println(">>>>>>>>>>>>>>" + count);
         check.setText("");
         for (int i = 0; i < 7; i++) {
-            if (i >= question.getAnswerVariants().size()) {
+            if (i >= question.getAnswers().size()) {
                 rB[i].setText("");
                 rB[i].setSelected(false);
                 rB[i].setVisible(false);
             } else {
-                rB[i].setText(question.getAnswerVariants().get(i).getAnswer());
+                rB[i].setText(question.getAnswers().get(i).getAnswer());
                 rB[i].setSelected(false);
                 rB[i].setVisible(true);
             }
         }
     }
 
-    /**
-     * Обновление progress bar
-     */
     public void setProgress(double d) {
         pB.setProgress(d);
     }

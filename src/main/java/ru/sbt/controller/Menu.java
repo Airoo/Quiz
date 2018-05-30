@@ -3,24 +3,23 @@ package ru.sbt.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
-public class MenuController {
+public class Menu {
+    @FXML
+    private MenuItem restart;
 
     private Main mainApp;
-    @FXML
-    private MenuItem mIRestart;
 
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
-    //Листнеры для кнопок "Menu"
     @FXML
-    private void restartGame() throws Exception {
+    private void restartGame() {
         mainApp.restartQuiz();
     }
 
     @FXML
-    private void loadNewGame() throws Exception {
+    private void loadNewGame() {
         mainApp.loadQuiz();
     }
 
@@ -30,7 +29,7 @@ public class MenuController {
     }
 
     public void enableRestartMenuItem() {
-        mIRestart.setVisible(true);
-        mIRestart.setDisable(false);
+        restart.setVisible(true);
+        restart.setDisable(false);
     }
 }
