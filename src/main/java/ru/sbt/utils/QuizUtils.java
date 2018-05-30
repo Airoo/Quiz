@@ -1,5 +1,7 @@
 package ru.sbt.utils;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.sbt.model.Answer;
@@ -37,7 +39,7 @@ public class QuizUtils {
         return String.valueOf(stringBuilder);
     }
 
-    public static List<Question> parse(String text) {
+    public static List<Question> parseTxt(String text) {
         List<Question> questionResults = new ArrayList<>();
         Question questionResult;
         String[] questions = text.split("Вопрос ");
@@ -95,5 +97,12 @@ public class QuizUtils {
             questionResults.add(questionResult);
         }
         return questionResults;
+    }
+
+    public static List<Question> parseJson(String json) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Question> questions = objectMapper.readValue(json, new TypeReference<List<Question>>() {
+        });
+        return questions;
     }
 }
