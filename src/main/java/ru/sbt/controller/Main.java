@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import ru.sbt.model.Question;
 import ru.sbt.service.Loader;
+import ru.sbt.utils.QuizUtils;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -97,9 +98,12 @@ public class Main extends Application {
     public void loadQuiz() {
         //questions = loader.load(importer.getFilePath());
         File file = new File("");
-        questions = loader.load(file.getAbsolutePath() + "/src/text/test.txt");
-        //TODO исправить баг с первым нулевым илементом
-        questions.remove(0);
+//        questions = loader.load(file.getAbsolutePath() + "/src/text/data.txt");
+        try {
+            questions = QuizUtils.parseJson(file.getAbsolutePath() + "/src/data/data.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Collections.shuffle(questions);
         showQuizView();
     }

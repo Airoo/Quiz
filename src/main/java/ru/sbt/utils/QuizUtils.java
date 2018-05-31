@@ -9,6 +9,7 @@ import ru.sbt.model.AnswerType;
 import ru.sbt.model.Question;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -99,10 +100,10 @@ public class QuizUtils {
         return questionResults;
     }
 
-    public static List<Question> parseJson(String json) throws IOException {
+    public static List<Question> parseJson(String pathJson) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Question> questions = objectMapper.readValue(json, new TypeReference<List<Question>>() {
+        return objectMapper.readValue(new File(pathJson), new TypeReference<List<Question>>() {
         });
-        return questions;
     }
+
 }

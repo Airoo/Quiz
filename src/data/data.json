@@ -1,14 +1,6 @@
 [
   {
     "section": null,
-    "number": null,
-    "description": null,
-    "help": null,
-    "type": "EMPTY",
-    "answers": []
-  },
-  {
-    "section": null,
     "number": "Вопрос № 1",
     "description": "Какие требования предъявляются к методу equals:\n",
     "help": "рефлексивность x.equals(x)=true\nсимметричность x.equals(y)=true, y.equals(x)=true\nтранзитивность x.equals(z)=true, y.equals(z)=true, x.equals(y)=true \nнепротиворечивость x.equals(x)=true постоянно\nx.equals(null)=false\n",
@@ -19,12 +11,20 @@
         "correct": true
       },
       {
-        "answer": "\tДля любых x и y не равных null, если x.equals(у) возвращает true, то x.hashCode() равен y.hashCode()\tЕсли x.hashCode() и y.hashCode() равны, то x.equals(у) должно быть true\n",
+        "answer": "\tДля любых x и y не равных null, если x.equals(у) возвращает true, то x.hashCode() равен y.hashCode()\n",
         "correct": true
       },
       {
-        "answer": "\tДля любых не null x – x.equals(x) возвращает true\tЕсли x равно null - x.equals(null) возвращает true\n",
+        "answer": "\tЕсли x.hashCode() и y.hashCode() равны, то x.equals(у) должно быть true\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДля любых не null x – x.equals(x) возвращает true\n",
         "correct": true
+      },
+      {
+        "answer": "\tЕсли x равно null - x.equals(null) возвращает true\n",
+        "correct": false
       }
     ]
   },
@@ -40,12 +40,20 @@
         "correct": true
       },
       {
-        "answer": "\tДля получения списка аннотаций у данного класса\tДля управления памятью, выделяемой для объекта данного класса\n",
+        "answer": "\tДля получения списка аннотаций у данного класса\n",
         "correct": true
       },
       {
-        "answer": "\tДля получения полей и методов класса\tДля динамической загрузки классов во время выполнения\n",
+        "answer": "\tДля управления памятью, выделяемой для объекта данного класса\n",
+        "correct": false
+      },
+      {
+        "answer": "\tДля получения полей и методов класса\n",
         "correct": true
+      },
+      {
+        "answer": "\tДля динамической загрузки классов во время выполнения\n",
+        "correct": false
       }
     ]
   },
@@ -57,8 +65,28 @@
     "type": "SINGLE",
     "answers": [
       {
-        "answer": "\tЖелательно при переопределении метода\tЖелательно при переопределенни класса\tЖелательно при перегрузке метода\n",
+        "answer": "\tОбязательно при перегрузке метода\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВсегда при переопределении класса\n",
+        "correct": false
+      },
+      {
+        "answer": "\tВсегда при переопределении метода\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЖелательно при переопределении метода\n",
         "correct": true
+      },
+      {
+        "answer": "\tЖелательно при переопределенни класса\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЖелательно при перегрузке метода\n",
+        "correct": false
       }
     ]
   },
@@ -69,6 +97,22 @@
     "help": null,
     "type": "SINGLE",
     "answers": [
+      {
+        "answer": "\tpublic interface MyAnnotation\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic class MyAnnotation extends Annotation\n",
+        "correct": false
+      },
+      {
+        "answer": "\tpublic interface @MyAnnotation\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЭто невозможно, поддерживаются только встроенные аннотации\n",
+        "correct": false
+      },
       {
         "answer": "\tpublic @interface MyAnnotation\n",
         "correct": true
@@ -82,6 +126,14 @@
     "help": "для одного и того-же объекта, хеш-код всегда будет одинаковым;\nесли объекты одинаковые, то и хеш-коды одинаковые\nесли хеш-коды равны, то входные объекты не всегда равны (коллизия)\n",
     "type": "MULTIPLE",
     "answers": [
+      {
+        "answer": "\tПри вычислении значения обязательно должно использоваться значение, возвращаемое методом super.hashCode(), кроме объектов класса Object.\n",
+        "correct": false
+      },
+      {
+        "answer": "\tЕсли hashCode() для двух объектов вернул одинаковое значение, то метод equals() должен возвращать true\n",
+        "correct": false
+      },
       {
         "answer": "\thashCode() должна гарантировать, что значения, возвращаемые ею для разных объектов, не совпадают\n",
         "correct": true
@@ -100,12 +152,20 @@
     "type": "MULTIPLE",
     "answers": [
       {
+        "answer": "\tЕсли два объекта возвращают одинаковое значение hashCode(), значит они равны\n",
+        "correct": false
+      },
+      {
         "answer": "\tЕсли два объекта возвращают разные значения hashCode(), то они не могут быть равны\n",
         "correct": true
       },
       {
-        "answer": "\tЕсли два объекта равны, они должны возвращать одинаковое значение hashCode()\tЕсли два объекта не равны, то и hashCode() у них обязательно отличаеться\n",
+        "answer": "\tЕсли два объекта равны, они должны возвращать одинаковое значение hashCode()\n",
         "correct": true
+      },
+      {
+        "answer": "\tЕсли два объекта не равны, то и hashCode() у них обязательно отличаеться\n",
+        "correct": false
       }
     ]
   },
@@ -116,6 +176,18 @@
     "help": null,
     "type": "SINGLE",
     "answers": [
+      {
+        "answer": "\tЛучше использовать “+”. Все остальные способы хуже.\n",
+        "correct": false
+      },
+      {
+        "answer": "\tМетод concat()\n",
+        "correct": false
+      },
+      {
+        "answer": "\tStringBuffer\n",
+        "correct": false
+      },
       {
         "answer": "\tStringBuilder\n",
         "correct": true
@@ -143,8 +215,24 @@
     "type": "SINGLE",
     "answers": [
       {
-        "answer": "\tString value();\tString setValue();\n",
+        "answer": "\tString value;\n",
+        "correct": false
+      },
+      {
+        "answer": "\tString name();\n",
+        "correct": false
+      },
+      {
+        "answer": "\tString getValue();\n",
+        "correct": false
+      },
+      {
+        "answer": "\tString value();\n",
         "correct": true
+      },
+      {
+        "answer": "\tString setValue();\n",
+        "correct": false
       }
     ]
   },
@@ -156,8 +244,16 @@
     "type": "MULTIPLE",
     "answers": [
       {
-        "answer": "\tdateOfBirth\tworkInCompany\tage\n",
+        "answer": "\tdateOfBirth\n",
         "correct": true
+      },
+      {
+        "answer": "\tworkInCompany\n",
+        "correct": false
+      },
+      {
+        "answer": "\tage\n",
+        "correct": false
       },
       {
         "answer": "\tfullName\n",
@@ -173,8 +269,20 @@
     "type": "SINGLE",
     "answers": [
       {
-        "answer": "\tfalse\tПроизойдет исключение\n",
+        "answer": "\tНе скомпилируется\n",
+        "correct": false
+      },
+      {
+        "answer": "\ttrue\n",
+        "correct": false
+      },
+      {
+        "answer": "\tfalse\n",
         "correct": true
+      },
+      {
+        "answer": "\tПроизойдет исключение\n",
+        "correct": false
       }
     ]
   },
@@ -186,8 +294,20 @@
     "type": "SINGLE",
     "answers": [
       {
-        "answer": "\tO(1)\tO(n^2)\tO(n)\n",
+        "answer": "\tO(log n)\n",
+        "correct": false
+      },
+      {
+        "answer": "\tO(1)\n",
         "correct": true
+      },
+      {
+        "answer": "\tO(n^2)\n",
+        "correct": false
+      },
+      {
+        "answer": "\tO(n)\n",
+        "correct": false
       }
     ]
   },

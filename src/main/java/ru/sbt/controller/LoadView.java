@@ -31,17 +31,17 @@ public class LoadView {
     }
 
     @FXML
-    private void bResume() throws Exception {
+    private void bResume() {
         mainApp.resumeQuiz();
     }
 
     @FXML
-    private void bRestart() throws Exception {
+    private void bRestart() {
         mainApp.restartQuiz();
     }
 
     @FXML
-    private void bLoad() throws Exception {
+    private void bStart() {
         mainApp.loadQuiz();
     }
 
