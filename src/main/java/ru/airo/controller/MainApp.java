@@ -6,6 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -23,6 +27,37 @@ public class MainApp extends Application {
 
     @FXML
     private Button button;
+
+    @FXML
+    private CheckBox processing;
+
+    @FXML
+    private CheckBox errorAlert;
+
+    @FXML
+    private CheckBox statistic;
+
+    @FXML
+    private CheckBox timing;
+
+    @FXML
+    private ComboBox questionsCount;
+
+    @FXML
+    private Tab settings;
+
+    @FXML
+    private Tab train;
+
+    @FXML
+    private Tab test;
+
+    @FXML
+    private Tab statistics;
+
+    @FXML
+    private TabPane tabPane;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -44,6 +79,20 @@ public class MainApp extends Application {
     private void handleButtonAction(ActionEvent event) {
         textArea.setText("Hello sdsd sssssssssssssssssssssssss World! ");
         vbox.getChildren().add(new Button());
+    }
+
+    @FXML
+    private void startTest(ActionEvent event) {
+        tabPane.getSelectionModel().select(test);
+        test.setDisable(false);
+        train.setDisable(true);
+    }
+
+    @FXML
+    private void startTrain(ActionEvent event) {
+        tabPane.getSelectionModel().select(train);
+        train.setDisable(false);
+        test.setDisable(true);
     }
 }
 

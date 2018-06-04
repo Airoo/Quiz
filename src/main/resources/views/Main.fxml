@@ -13,11 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.TextArea?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.airo.controller.MainApp">
     <children>
-        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" fx:id="tabPane">
             <tabs>
-                <Tab text="Настройки">
+                <Tab text="Настройки" fx:id="settings">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="562.0">
                      <children>
@@ -25,11 +27,11 @@
                            <children>
                               <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="800.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" text="Начать обучение">
+                                    <Button mnemonicParsing="false" prefHeight="30.0" text="Начать обучение" onAction="#startTrain">
                                        <HBox.margin>
                                           <Insets right="10.0" />
                                        </HBox.margin></Button>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" text="Начать тест">
+                                    <Button mnemonicParsing="false" prefHeight="30.0" text="Начать тест" onAction="#startTest">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin></Button>
@@ -48,10 +50,22 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <ComboBox prefHeight="25.0" prefWidth="70.0">
+                                    <ComboBox prefHeight="25.0" prefWidth="70.0" fx:id="questionsCount">
+                                        <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="20" />
+                                                <String fx:value="40" />
+                                                <String fx:value="60" />
+                                                <String fx:value="all" />
+                                            </FXCollections>
+                                        </items>
+                                        <value>
+                                            <String fx:value="all" />
+                                        </value>
                                        <HBox.margin>
                                           <Insets right="10.0" />
-                                       </HBox.margin></ComboBox>
+                                       </HBox.margin>
+                                    </ComboBox>
                                     <Label prefHeight="25.0" text="Колличество вопрос в тесте">
                                        <HBox.margin>
                                           <Insets right="10.0" />
@@ -64,7 +78,7 @@
                               </HBox>
                               <HBox layoutX="10.0" layoutY="60.0">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="Показывать процессинг" />
+                                    <CheckBox mnemonicParsing="false" text="Показывать процессинг" selected="true" fx:id="processing"/>
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -72,7 +86,7 @@
                               </HBox>
                               <HBox layoutX="10.0" layoutY="110.0">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="Сразу сообщать об ошибках" />
+                                    <CheckBox mnemonicParsing="false" text="Сразу сообщать об ошибках" selected="true" fx:id="errorAlert"/>
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -80,7 +94,7 @@
                               </HBox>
                               <HBox layoutX="10.0" layoutY="150.0">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="Показывать статистику в конце" />
+                                    <CheckBox mnemonicParsing="false" text="Показывать статистику в конце" selected="true" fx:id="statistic"/>
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -88,7 +102,7 @@
                               </HBox>
                               <HBox layoutX="10.0" layoutY="179.0">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="Вести учет времени" />
+                                    <CheckBox mnemonicParsing="false" text="Вести учет времени" selected="true" fx:id="timing"/>
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -99,12 +113,12 @@
                      </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab disable="true"  text="Обучение">
+                <Tab disable="true"  text="Обучение" fx:id="train">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
-                <Tab disable="true" closable="false" text="Тест">
+                <Tab disable="true" closable="false" text="Тест" fx:id="test">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="520.0">
                             <children>
@@ -123,7 +137,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab disable="true" text="Стаистика">
+                <Tab disable="true" text="Стаистика" fx:id="statistics">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
