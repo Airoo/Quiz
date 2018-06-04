@@ -1,4 +1,4 @@
-package ru.sbt.controller;
+package ru.airo.controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,9 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import ru.sbt.model.Question;
-import ru.sbt.service.Loader;
-import ru.sbt.utils.QuizUtils;
+import ru.airo.model.Question;
+import ru.airo.service.Loader;
+import ru.airo.utils.QuizUtils;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -20,7 +20,6 @@ public class Main extends Application {
     private Importer importer = new Importer();
 
     private List<Question> questions;
-    private Stage primaryStage;
     private BorderPane rootLayout;
     private QuizView view;
     private LoadView load;
@@ -34,13 +33,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Quiz");
-        initMenu();
+        initMenu(primaryStage);
         initLoadView();
     }
 
-    private void initMenu() throws IOException {
+    private void initMenu(Stage primaryStage) throws IOException {
+        primaryStage.setTitle("Quiz");
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("/views/Menu.fxml"));
         rootLayout = fxmlLoader.load();

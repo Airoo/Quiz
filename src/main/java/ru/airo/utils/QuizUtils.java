@@ -1,12 +1,12 @@
-package ru.sbt.utils;
+package ru.airo.utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.sbt.model.Answer;
-import ru.sbt.model.AnswerType;
-import ru.sbt.model.Question;
+import ru.airo.model.Answer;
+import ru.airo.model.AnswerType;
+import ru.airo.model.Question;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package ru.sbt.model;
+package ru.airo.model;
 
 import lombok.Getter;
 import lombok.Setter;

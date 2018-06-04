@@ -1,4 +1,4 @@
-package ru.sbt.model;
+package ru.airo.model;
 
 public enum AnswerType {
     SINGLE, MULTIPLE, EMPTY;

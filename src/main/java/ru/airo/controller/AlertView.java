@@ -1,4 +1,4 @@
-package ru.sbt.controller;
+package ru.airo.controller;
 
 import javafx.scene.control.Alert.AlertType;
 

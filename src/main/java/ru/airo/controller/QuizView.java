@@ -1,10 +1,10 @@
-package ru.sbt.controller;
+package ru.airo.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import ru.sbt.model.Answer;
-import ru.sbt.model.Question;
+import ru.airo.model.Answer;
+import ru.airo.model.Question;
 
 import java.util.ArrayList;
 import java.util.Collections;

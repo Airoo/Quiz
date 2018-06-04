@@ -1,9 +1,9 @@
-package ru.sbt.service;
+package ru.airo.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
-import ru.sbt.model.Question;
+import ru.airo.model.Question;
 
 import java.io.File;
 import java.io.IOException;

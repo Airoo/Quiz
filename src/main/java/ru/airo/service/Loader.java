@@ -1,9 +1,9 @@
-package ru.sbt.service;
+package ru.airo.service;
 
-import static ru.sbt.utils.QuizUtils.parseTxt;
-import static ru.sbt.utils.QuizUtils.readFile;
+import static ru.airo.utils.QuizUtils.parseTxt;
+import static ru.airo.utils.QuizUtils.readFile;
 
-import ru.sbt.model.Question;
+import ru.airo.model.Question;
 
 import java.util.List;
 
