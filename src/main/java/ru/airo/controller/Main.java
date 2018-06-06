@@ -97,11 +97,11 @@ public class Main extends Application {
         //questions = loader.load(importer.getFilePath());
         File file = new File("");
 //        questions = loader.load(file.getAbsolutePath() + "/src/text/data.txt");
-        try {
-            questions = QuizUtils.parseJson(file.getAbsolutePath() + "/src/data/data.json");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            questions = QuizUtils.parseJson(file.getAbsolutePath() + "/src/data/data.json");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         Collections.shuffle(questions);
         showQuizView();
     }

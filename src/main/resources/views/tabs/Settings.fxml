@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+    <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.airo.controller.tabs.Settings">
+    <children>
+        <VBox>
+            <children>
+                <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="800.0">
+                    <children>
+                        <Button mnemonicParsing="false"  prefHeight="30.0" text="Начать обучение">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false"  prefHeight="30.0" text="Начать тест">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefWidth="800.0">
+                    <children>
+                        <Separator prefWidth="800.0" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox>
+                    <children>
+                        <ComboBox fx:id="questionsCount" prefHeight="25.0" prefWidth="70.0">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="20" />
+                                    <String fx:value="40" />
+                                    <String fx:value="60" />
+                                    <String fx:value="all" />
+                                </FXCollections>
+                            </items>
+                            <value>
+                                <String fx:value="all" />
+                            </value>
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </ComboBox>
+                        <Label prefHeight="25.0" text="Колличество вопрос в тесте">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="60.0">
+                    <children>
+                        <CheckBox fx:id="processing" mnemonicParsing="false" selected="true" text="Показывать процессинг" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="110.0">
+                    <children>
+                        <CheckBox fx:id="errorAlert" mnemonicParsing="false" selected="true" text="Сразу сообщать об ошибках" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="150.0">
+                    <children>
+                        <CheckBox fx:id="statistic" mnemonicParsing="false" selected="true" text="Показывать статистику в конце" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="179.0">
+                    <children>
+                        <CheckBox fx:id="timing" mnemonicParsing="false" selected="true" text="Вести учет времени" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

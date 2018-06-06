@@ -1,145 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.TextArea?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.airo.controller.MainApp">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.airo.controller.MainApp">
     <children>
-        <TabPane prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" fx:id="tabPane">
+        <TabPane fx:id="tabPane" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="Настройки" fx:id="settings">
+                <Tab fx:id="settings" text="Настройки">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="562.0">
-                     <children>
-                        <VBox>
-                           <children>
-                              <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="800.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" text="Начать обучение" onAction="#startTrain">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin></Button>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" text="Начать тест" onAction="#startTest">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin></Button>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefWidth="800.0">
-                                 <children>
-                                    <Separator prefWidth="800.0" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <HBox>
-                                 <children>
-                                    <ComboBox prefHeight="25.0" prefWidth="70.0" fx:id="questionsCount">
-                                        <items>
-                                            <FXCollections fx:factory="observableArrayList">
-                                                <String fx:value="20" />
-                                                <String fx:value="40" />
-                                                <String fx:value="60" />
-                                                <String fx:value="all" />
-                                            </FXCollections>
-                                        </items>
-                                        <value>
-                                            <String fx:value="all" />
-                                        </value>
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </ComboBox>
-                                    <Label prefHeight="25.0" text="Колличество вопрос в тесте">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <HBox layoutX="10.0" layoutY="60.0">
-                                 <children>
-                                    <CheckBox mnemonicParsing="false" text="Показывать процессинг" selected="true" fx:id="processing"/>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <HBox layoutX="10.0" layoutY="110.0">
-                                 <children>
-                                    <CheckBox mnemonicParsing="false" text="Сразу сообщать об ошибках" selected="true" fx:id="errorAlert"/>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <HBox layoutX="10.0" layoutY="150.0">
-                                 <children>
-                                    <CheckBox mnemonicParsing="false" text="Показывать статистику в конце" selected="true" fx:id="statistic"/>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                              <HBox layoutX="10.0" layoutY="179.0">
-                                 <children>
-                                    <CheckBox mnemonicParsing="false" text="Вести учет времени" selected="true" fx:id="timing"/>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children></AnchorPane>
+                        <fx:include source="tabs/Settings.fxml"/>
                     </content>
                 </Tab>
-                <Tab disable="true"  text="Обучение" fx:id="train">
+                <Tab fx:id="train" text="Обучение">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <fx:include source="tabs/Train.fxml"/>
                     </content>
                 </Tab>
-                <Tab disable="true" closable="false" text="Тест" fx:id="test">
+                <Tab fx:id="test" text="Тест">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="520.0">
-                            <children>
-                                <VBox fx:id="vbox" prefHeight="571.0" prefWidth="800.0">
-                                    <!--<children>-->
-                                        <!--<TextArea fx:id="textArea" editable="false" prefHeight="350.0" />-->
-                                    <!--</children>-->
-                                    <children>
-                                        <Button fx:id="button" mnemonicParsing="false" onAction="#handleButtonAction" text="Button" />
-                                    </children>
-                                    <padding>
-                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                    </padding>
-                                </VBox>
-                            </children>
-                        </AnchorPane>
+                        <fx:include source="tabs/Test.fxml"/>
                     </content>
                 </Tab>
-                <Tab disable="true" text="Стаистика" fx:id="statistics">
+                <Tab fx:id="statisticsTab" text="Стаистика">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <fx:include source="tabs/Statistics.fxml"/>
                     </content>
                 </Tab>
             </tabs>

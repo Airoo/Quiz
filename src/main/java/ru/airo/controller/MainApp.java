@@ -5,12 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -19,8 +14,7 @@ import java.io.IOException;
 
 public class MainApp extends Application {
 
-    @FXML
-    private TextArea textArea;
+    
 
     @FXML
     private VBox vbox;
@@ -28,20 +22,7 @@ public class MainApp extends Application {
     @FXML
     private Button button;
 
-    @FXML
-    private CheckBox processing;
 
-    @FXML
-    private CheckBox errorAlert;
-
-    @FXML
-    private CheckBox statistic;
-
-    @FXML
-    private CheckBox timing;
-
-    @FXML
-    private ComboBox questionsCount;
 
     @FXML
     private Tab settings;
@@ -53,21 +34,21 @@ public class MainApp extends Application {
     private Tab test;
 
     @FXML
-    private Tab statistics;
+    private Tab statisticsTab;
 
     @FXML
     private TabPane tabPane;
 
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         initMenu(primaryStage);
+//        initSettings();
     }
+
 
     private void initMenu(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Quiz");
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Main.class.getResource("/views/Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/views/Main.fxml"));
         AnchorPane rootLayout = fxmlLoader.load();
         Scene scene = new Scene(rootLayout);
         primaryStage.setResizable(false);
@@ -75,11 +56,49 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        textArea.setText("Hello sdsd sssssssssssssssssssssssss World! ");
-        vbox.getChildren().add(new Button());
+    private void initSettings() {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/views/tabs/Settings.fxml"));
+        AnchorPane settingsAnchorPane = null;
+        try {
+            settingsAnchorPane = fxmlLoader.load();
+        } catch (IOException e) {
+            new AlertView(e.getMessage());
+        }
+        settings.setContent(settingsAnchorPane);
+//        LoadView viewController = fxmlLoader.getController();
+//        viewController.setMainApp(this);
+//        load = viewController;
     }
+
+    /*
+    private void initMenu(Stage primaryStage) throws IOException {
+        primaryStage.setTitle("Quiz");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("/views/Menu.fxml"));
+        rootLayout = fxmlLoader.load();
+        Scene scene = new Scene(rootLayout);
+        primaryStage.setScene(scene);
+        Menu viewController = fxmlLoader.getController();
+        viewController.setMainApp(this);
+        menu = viewController;
+        primaryStage.show();
+    }
+
+    private void initLoadView() {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("/views/LoadView.fxml"));
+        AnchorPane loadView = null;
+        try {
+            loadView = fxmlLoader.load();
+        } catch (IOException e) {
+            new AlertView(e.getMessage());
+        }
+        rootLayout.setCenter(loadView);
+        LoadView viewController = fxmlLoader.getController();
+        viewController.setMainApp(this);
+        load = viewController;
+    }
+     */
 
     @FXML
     private void startTest(ActionEvent event) {

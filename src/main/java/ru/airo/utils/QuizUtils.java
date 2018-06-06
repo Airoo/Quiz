@@ -8,11 +8,7 @@ import ru.airo.model.Answer;
 import ru.airo.model.AnswerType;
 import ru.airo.model.Question;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +29,9 @@ public class QuizUtils {
                 line = bufferedReader.readLine();
             }
         } catch (FileNotFoundException fnfe) {
-            LOGGER.error("Файл " + filePath + " не найден", fnfe);
+            LOGGER.error("Файл " + filePath + " не найден", fnfe.getMessage());
         } catch (IOException ioe) {
-            LOGGER.error("Ошибка ", ioe);
+            LOGGER.error("Ошибка ", ioe.getMessage());
         }
         return String.valueOf(stringBuilder);
     }
@@ -100,10 +96,16 @@ public class QuizUtils {
         return questionResults;
     }
 
-    public static List<Question> parseJson(String pathJson) throws IOException {
+    public static List<Question> parseJson(String pathJson) {
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(new File(pathJson), new TypeReference<List<Question>>() {
-        });
+        List<Question> questions = null;
+        try {
+            questions = objectMapper.readValue(new File(pathJson), new TypeReference<List<Question>>() {
+            });
+        } catch (IOException e) {
+            LOGGER.error("Ошибка ", e.getMessage());
+        }
+        return questions;
     }
 
 }
