@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.airo.model.Question;
@@ -22,16 +23,6 @@ public class Test {
 
     @FXML
     private TextArea textArea;
-
-    public static Test getController() {
-        FXMLLoader loader = new FXMLLoader(Settings.class.getResource("/views/tabs/Test.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            LOGGER.error("Ошибка ", e.getMessage());
-        }
-        return loader.getController();
-    }
 
     public void finishTest(ActionEvent actionEvent) {
     }

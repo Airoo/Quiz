@@ -2,6 +2,7 @@ package ru.airo.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Before;
 import org.junit.Test;
 import ru.airo.model.Question;
 
@@ -14,10 +15,11 @@ public class LoaderTest {
     private String pathJson;
     private Loader loader = new Loader();
 
+    @Before
     public void setUp() {
         File file = new File("");
-        pathTxt = file.getAbsolutePath() + "/src/text/data.txt";
-        pathJson = file.getAbsolutePath() + "/src/text/data.josn";
+        pathTxt = file.getAbsolutePath() + "/src/data/data.txt";
+        pathJson = file.getAbsolutePath() + "/src/data/data.json";
     }
 
     @Test
@@ -32,7 +34,6 @@ public class LoaderTest {
     @Test
     public void parseJson() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-
         List<Question> questions = objectMapper.readValue(new File(pathJson), new TypeReference<List<Question>>() {
         });
     }

@@ -15,7 +15,7 @@ public class Loader {
 
     public List<Question> load() {
         File file = new File("");
-        String json = readFile(file.getAbsolutePath() + "/src/data/data.json");
-        return parseJson(json);
+        String jsonPath = file.getAbsolutePath() + "/src/data/data.json";
+        return parseJson(jsonPath);
     }
 }

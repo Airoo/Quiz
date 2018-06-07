@@ -9,12 +9,32 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.airo.controller.tabs.Settings;
+import ru.airo.controller.tabs.Statistics;
+import ru.airo.controller.tabs.Test;
+import ru.airo.controller.tabs.Train;
 
 import java.io.IOException;
 
 public class MainApp extends Application {
+    private static final String SETTINGS_FXML_PATH = "/views/tabs/Settings.fxml";
+    private static final String TEST_FXML_PATH = "/views/tabs/Test.fxml";
+    private static final String TRAIN_FXML_PATH = "/views/tabs/Train.fxml";
+    private static final String STATISTICS_FXML_PATH = "/views/tabs/Statistics.fxml";
 
-    
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainApp.class);
+
+    @Getter
+    private Settings settingsController;
+    @Getter
+    private Test testController;
+    @Getter
+    private Train trainController;
+    @Getter
+    private Statistics statisticsController;
 
     @FXML
     private VBox vbox;
@@ -42,7 +62,10 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         initMenu(primaryStage);
-//        initSettings();
+        settingsController = (Settings) loadController(SETTINGS_FXML_PATH);
+        testController = (Test) loadController(TEST_FXML_PATH);
+        trainController = (Train) loadController(TRAIN_FXML_PATH);
+        statisticsController = (Statistics) loadController(STATISTICS_FXML_PATH);
     }
 
 
@@ -68,6 +91,16 @@ public class MainApp extends Application {
 //        LoadView viewController = fxmlLoader.getController();
 //        viewController.setMainApp(this);
 //        load = viewController;
+    }
+
+    private Object loadController(String path) {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(path));
+        try {
+            fxmlLoader.load();
+        } catch (IOException e) {
+            LOGGER.error("Ошибка ", e.getMessage());
+        }
+        return fxmlLoader.getController();
     }
 
     /*

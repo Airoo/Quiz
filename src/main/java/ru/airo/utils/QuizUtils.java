@@ -96,11 +96,11 @@ public class QuizUtils {
         return questionResults;
     }
 
-    public static List<Question> parseJson(String pathJson) {
+    public static List<Question> parseJson(String jsonPath) {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Question> questions = null;
         try {
-            questions = objectMapper.readValue(new File(pathJson), new TypeReference<List<Question>>() {
+            questions = objectMapper.readValue(new File(jsonPath), new TypeReference<List<Question>>() {
             });
         } catch (IOException e) {
             LOGGER.error("Ошибка ", e.getMessage());
