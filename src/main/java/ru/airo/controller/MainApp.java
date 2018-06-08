@@ -1,7 +1,6 @@
 package ru.airo.controller;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -60,20 +59,6 @@ public class MainApp extends Application {
             LOGGER.error("Ошибка ", e.getMessage());
         }
         return fxmlLoader.getController();
-    }
-
-    @FXML
-    private void startTest(ActionEvent event) {
-        tabPane.getSelectionModel().select(test);
-        test.setDisable(false);
-        train.setDisable(true);
-    }
-
-    @FXML
-    private void startTrain(ActionEvent event) {
-        tabPane.getSelectionModel().select(train);
-        train.setDisable(false);
-        test.setDisable(true);
     }
 }
 

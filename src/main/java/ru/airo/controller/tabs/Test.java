@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.util.Duration;
@@ -27,12 +28,31 @@ public class Test {
     private Label score;
     @FXML
     private Label time;
+    @FXML
+    private Button start;
+    @FXML
+    private Button finish;
+    @FXML
+    private Button next;
+    @FXML
+    private Button prev;
 
     public void finishTest(ActionEvent actionEvent) {
+        initButtons(false);
     }
 
     public void startTest(ActionEvent actionEvent) {
+        initButtons(true);
         initNewGame();
+    }
+
+    private void initButtons(boolean init) {
+        start.setDisable(init);
+        finish.setDisable(!init);
+        next.setDisable(!init);
+        prev.setDisable(!init);
+        textArea.clear();
+        textArea.setDisable(!init);
     }
 
     public void backBtn(ActionEvent actionEvent) {
@@ -73,19 +93,20 @@ public class Test {
     }
 
     private void showTime() {
-        long endTime = 2000000000000L;
+        long startTime = System.currentTimeMillis();
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
         final Timeline timeline = new Timeline(
                 new KeyFrame(
                         Duration.millis(500),
                         event -> {
-                            final long diff = endTime - System.currentTimeMillis();
-                            if (diff < 0) {
-                                //  timeLabel.setText( "00:00:00" );
-                                time.setText(timeFormat.format(0));
-                            } else {
-                                time.setText(timeFormat.format(diff));
-                            }
+//                            final long diff = endTime - System.currentTimeMillis();
+//                            if (diff < 0) {
+//                                //  timeLabel.setText( "00:00:00" );
+//                                time.setText(timeFormat.format(0));
+//                            } else {
+//                                time.setText(timeFormat.format(diff));
+//                            }
+                            time.setText(timeFormat.format(System.currentTimeMillis() - startTime));
                         }
                 )
         );
