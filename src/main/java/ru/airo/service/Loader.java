@@ -18,4 +18,9 @@ public class Loader {
         String jsonPath = file.getAbsolutePath() + "/src/data/data.json";
         return parseJson(jsonPath);
     }
+
+    public List<Question> loadFromUrl() {
+        return parseJson("https://raw.githubusercontent.com/Airoo/Quiz/master/src/data/data.json");
+    }
+
 }
