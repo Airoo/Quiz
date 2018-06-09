@@ -8,69 +8,65 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.airo.controller.tabs.Test">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.airo.controller.tabs.Test">
     <children>
         <VBox>
             <children>
                 <HBox prefHeight="50.0" prefWidth="800.0">
                     <children>
-                        <Button minWidth="150.0" mnemonicParsing="false" onAction="#startTest" prefHeight="30.0" prefWidth="100.0" text="Начать тест">
+                        <Button fx:id="start" minWidth="150.0" mnemonicParsing="false" onAction="#startTest"
+                                prefHeight="30.0" prefWidth="100.0" text="Начать тест">
                             <HBox.margin>
-                                <Insets right="10.0" />
+                                <Insets right="10.0"/>
                             </HBox.margin>
                         </Button>
-                        <Button minWidth="150.0" mnemonicParsing="false" onAction="#finishTest" prefHeight="30.0" text="Закончить тест">
+                        <Button fx:id="finish" disable="true" minWidth="150.0" mnemonicParsing="false"
+                                onAction="#finishTest" prefHeight="30.0" text="Закончить тест">
                             <HBox.margin>
-                                <Insets right="300.0" />
+                                <Insets right="350.0"/>
                             </HBox.margin>
                         </Button>
-                        <Button layoutX="670.0" layoutY="20.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="30.0" prefWidth="50.0" text="&lt;">
+                        <Button layoutX="670.0" layoutY="20.0" mnemonicParsing="false" onAction="#backBtn"
+                                prefHeight="30.0" prefWidth="50.0" text="&lt;" fx:id="next" disable="true">
                             <HBox.margin>
-                                <Insets right="10.0" />
+                                <Insets right="10.0"/>
                             </HBox.margin>
                         </Button>
-                        <Button layoutX="670.0" layoutY="20.0" mnemonicParsing="false" onAction="#openBtn" prefHeight="30.0" prefWidth="50.0" text="-">
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                        </Button>
-                        <Button layoutX="670.0" layoutY="20.0" mnemonicParsing="false" onAction="#nextBtn" prefHeight="30.0" prefWidth="50.0" text="&gt;" />
+                        <Button layoutX="670.0" layoutY="20.0" mnemonicParsing="false" onAction="#nextBtn"
+                                prefHeight="30.0" prefWidth="50.0" text="&gt;" fx:id="prev" disable="true"/>
                     </children>
                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
                 </HBox>
                 <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefWidth="800.0">
                     <children>
-                        <Separator prefWidth="800.0" />
+                        <Separator prefWidth="800.0"/>
                     </children>
                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
                 </HBox>
                 <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="60.0" prefWidth="800.0">
                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
                     <children>
-                        <TextArea fx:id="textArea" disable="true" editable="false" prefHeight="300.0" prefWidth="780.0" />
+                        <TextArea fx:id="textArea" disable="true" editable="false" prefHeight="250.0"
+                                  prefWidth="780.0"/>
                     </children>
                 </HBox>
-                <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="800.0">
+                <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="800.0">
                     <children>
-                        <Label fx:id="score" alignment="CENTER" prefWidth="50.0" text="score" visible="false" />
-                        <Label fx:id="time" alignment="CENTER" layoutX="750.0" layoutY="20.0" prefWidth="50.0" text="time" visible="false" />
+                        <Label fx:id="score" alignment="CENTER" prefWidth="50.0" text="score" visible="false"/>
+                        <Label fx:id="time" alignment="CENTER" layoutX="750.0" layoutY="20.0" prefWidth="80.0"
+                               text="time" visible="false"/>
                     </children>
                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
                 </HBox>
-            <VBox layoutX="10.0" layoutY="400.0" prefHeight="50.0" prefWidth="800.0" fx:id="container">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </VBox>
             </children>
         </VBox>
     </children>

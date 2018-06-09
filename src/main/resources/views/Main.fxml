@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.airo.controller.MainApp">
     <children>
         <TabPane fx:id="tabPane" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab fx:id="settings" text="Настройки">
-                    <content>
-                        <fx:include source="tabs/Settings.fxml"/>
-                    </content>
-                </Tab>
                 <Tab fx:id="train" text="Обучение">
                     <content>
                         <fx:include source="tabs/Train.fxml"/>
@@ -25,6 +21,11 @@
                 <Tab fx:id="statisticsTab" text="Стаистика">
                     <content>
                         <fx:include source="tabs/Statistics.fxml"/>
+                    </content>
+                </Tab>
+                <Tab fx:id="settings" text="Настройки">
+                    <content>
+                        <fx:include source="tabs/Settings.fxml"/>
                     </content>
                 </Tab>
             </tabs>
