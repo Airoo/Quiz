@@ -19,6 +19,7 @@ import ru.airo.service.Loader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.TimeZone;
 
 public class Test {
     private Loader dataLoader = new Loader();
@@ -46,6 +47,9 @@ public class Test {
     public void finishTest(ActionEvent actionEvent) {
         initButtons(false);
         timeline.stop();
+        container.getChildren().clear();
+        score.setVisible(false);
+        time.setVisible(false);
     }
 
     public void startTest(ActionEvent actionEvent) {
@@ -64,6 +68,7 @@ public class Test {
 
     public void backBtn(ActionEvent actionEvent) {
         stepQuestion(false);
+        fillContainer(questions.get(number));
     }
 
     public void openBtn(ActionEvent actionEvent) {
@@ -72,6 +77,7 @@ public class Test {
 
     public void nextBtn(ActionEvent actionEvent) {
         stepQuestion(true);
+        fillContainer(questions.get(number));
     }
 
     private void initNewGame() {
@@ -84,9 +90,10 @@ public class Test {
         textArea.setDisable(false);
         textArea.setText(questions.get(number).getDescription());
         score.setText(number + "/" + (questions.size() - 1));
-        score.setVisible(QuizSettings.isStatistic());
+        score.setVisible(QuizSettings.isProcessing());
         time.setVisible(QuizSettings.isTiming());
         showTime();
+        fillContainer(questions.get(number));
     }
 
     private void stepQuestion(boolean next) {
@@ -112,19 +119,11 @@ public class Test {
     private void showTime() {
         long startTime = System.currentTimeMillis();
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        timeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         timeline = new Timeline(
                 new KeyFrame(
                         Duration.millis(500),
-                        event -> {
-//                            final long diff = endTime - System.currentTimeMillis();
-//                            if (diff < 0) {
-//                                //  timeLabel.setText( "00:00:00" );
-//                                time.setText(timeFormat.format(0));
-//                            } else {
-//                                time.setText(timeFormat.format(diff));
-//                            }
-                            time.setText(timeFormat.format(System.currentTimeMillis() - startTime));
-                        }
+                        event -> time.setText(timeFormat.format(System.currentTimeMillis() - startTime))
                 )
         );
         timeline.setCycleCount(Animation.INDEFINITE);
