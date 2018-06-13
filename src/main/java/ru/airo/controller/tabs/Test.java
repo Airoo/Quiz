@@ -24,6 +24,7 @@ public class Test {
     private Loader dataLoader = new Loader();
     private List<Question> questions;
     private int number = 0;
+    private Timeline timeline;
 
     @FXML
     private TextArea textArea;
@@ -44,6 +45,7 @@ public class Test {
 
     public void finishTest(ActionEvent actionEvent) {
         initButtons(false);
+        timeline.stop();
     }
 
     public void startTest(ActionEvent actionEvent) {
@@ -110,7 +112,7 @@ public class Test {
     private void showTime() {
         long startTime = System.currentTimeMillis();
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        final Timeline timeline = new Timeline(
+        timeline = new Timeline(
                 new KeyFrame(
                         Duration.millis(500),
                         event -> {

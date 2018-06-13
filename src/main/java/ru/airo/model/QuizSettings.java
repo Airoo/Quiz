@@ -3,8 +3,6 @@ package ru.airo.model;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
 public class QuizSettings {
     @Getter
     @Setter
