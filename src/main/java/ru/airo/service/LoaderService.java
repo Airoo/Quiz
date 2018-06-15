@@ -7,7 +7,7 @@ import java.util.List;
 
 import static ru.airo.utils.QuizUtils.*;
 
-public class Loader {
+public class LoaderService {
     public List<Question> load(String filePath) {
         String questions = readFile(filePath);
         return parseTxt(questions);

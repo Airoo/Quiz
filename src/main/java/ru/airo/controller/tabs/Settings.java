@@ -4,10 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import ru.airo.model.QuizSettings;
+import ru.airo.service.DataService;
 
 public class Settings {
     private static final String ALL = "all";
+    private DataService dataService = new DataService();
 
     @FXML
     private CheckBox processing;
@@ -22,22 +23,22 @@ public class Settings {
 
     public void changeQuestionsCount(ActionEvent actionEvent) {
         String count = questionsCount.getValue().toString();
-        QuizSettings.setQuestionsCount(ALL.equals(count) ? Integer.MAX_VALUE : Integer.valueOf(count));
+        dataService.changeQuestionsCount(ALL.equals(count) ? Integer.MAX_VALUE : Integer.valueOf(count));
     }
 
     public void changeProcessing(ActionEvent actionEvent) {
-        QuizSettings.setProcessing(processing.isSelected());
+        dataService.changeProcessing(processing.isSelected());
     }
 
     public void changeErrorAlert(ActionEvent actionEvent) {
-        QuizSettings.setErrorAlert(errorAlert.isSelected());
+        dataService.changeErrorAlert(errorAlert.isSelected());
     }
 
     public void changeStatistic(ActionEvent actionEvent) {
-        QuizSettings.setStatistic(statistic.isSelected());
+        dataService.changeStatistic(statistic.isSelected());
     }
 
     public void changeTiming(ActionEvent actionEvent) {
-        QuizSettings.setTiming(timing.isSelected());
+        dataService.changeTiming(timing.isSelected());
     }
 }

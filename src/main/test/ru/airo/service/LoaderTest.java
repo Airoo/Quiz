@@ -14,7 +14,7 @@ public class LoaderTest {
     private String pathTxt;
     private String pathJson;
     private String pathJsonUrl;
-    private Loader loader = new Loader();
+    private LoaderService loader = new LoaderService();
 
     @Before
     public void setUp() {

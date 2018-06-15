@@ -7,16 +7,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import ru.airo.model.Question;
-import ru.airo.service.Loader;
-import ru.airo.utils.QuizUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.io.File;
 
 public class Main extends Application {
-    private Loader loader = new Loader();
     private Importer importer = new Importer();
 
     private List<Question> questions;

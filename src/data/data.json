@@ -202,8 +202,20 @@
     "type": "SINGLE",
     "answers": [
       {
-        "answer": "\tfalse flase true\ttrue false true\n",
+        "answer": "\tfalse false false",
+        "correct": false
+      },
+      {
+        "answer": "\ttrue true true",
+        "correct": false
+      },
+      {
+        "answer": "\tfalse false true",
         "correct": true
+      },
+      {
+        "answer": "\ttrue false true",
+        "correct": false
       }
     ]
   },

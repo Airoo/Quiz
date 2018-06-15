@@ -13,25 +13,27 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import ru.airo.controller.data.QuizData;
 import ru.airo.model.Answer;
 import ru.airo.model.Question;
-import ru.airo.model.QuizSettings;
-import ru.airo.service.Loader;
+import ru.airo.model.Result;
+import ru.airo.service.DataService;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Test {
-    private static final int MAX_LENGHT = 120;
+    private static final int MAX_LENGTH = 120;
     private static final int DOUBLE_ROW = 40;
     private static final int ONE_ROW = 25;
+    private static final String TIME_FORMAT = "HH:mm:ss";
 
-    private Loader dataLoader = new Loader();
+    private DataService dataService = new DataService();
     private List<Question> questions;
-    private int number = 0;
+    private int currentStep = 0;
     private Timeline timeline;
-    private Map<Integer, List<Answer>> dataAnswers;
+    private Map<Integer, List<Answer>> savedAnswers;
 
     @FXML
     private TextArea textArea;
@@ -56,10 +58,31 @@ public class Test {
         container.getChildren().clear();
         score.setVisible(false);
         time.setVisible(false);
+        collectResult();
+    }
+
+    private void collectResult() {
+        Result result = new Result();
+        result.setQuestionsCount(questions.size());
+        result.setTime(time.getText());
+        int correctAnswers = 0;
+//        for (int i = 0; i < questions.size(); i++) {
+//            List<Answer> originalAnswers = questions.get(i).getAnswers();
+//            if (savedAnswers.containsKey(i)) {
+//                for (int j = 0; j < savedAnswers.get(i).size(); j++) {
+//                    if (originalAnswers.get(j).isCorrect() != savedAnswers.get(i).get(j).isCorrect()) {
+//                        break;
+//                    }
+//                }
+//                correctAnswers++;
+//            }
+//        }
+//        System.out.println(correctAnswers);
+        dataService.setResult(result);
     }
 
     public void startTest(ActionEvent actionEvent) {
-        dataAnswers = new HashMap<>();
+        savedAnswers = new HashMap<>();
         initButtons(true);
         initNewGame();
     }
@@ -74,54 +97,62 @@ public class Test {
     }
 
     public void backBtn(ActionEvent actionEvent) {
-        setAnswersToData();
-        stepQuestion(false);
-        fillContainer(questions.get(number));
+        saveAnswers();
+        changeStepQuestion(false);
+        fillContainer(questions.get(currentStep));
     }
 
     public void nextBtn(ActionEvent actionEvent) {
-        setAnswersToData();
-        stepQuestion(true);
-        fillContainer(questions.get(number));
+        saveAnswers();
+        changeStepQuestion(true);
+        fillContainer(questions.get(currentStep));
     }
 
     private void initNewGame() {
-        if (Integer.MAX_VALUE == QuizSettings.getQuestionsCount()) {
-            questions = dataLoader.load();
+        if (Integer.MAX_VALUE == QuizData.getQuestionsCount()) {
+            questions = dataService.getAllQuestions();
         } else {
-            questions = dataLoader.load().subList(0, QuizSettings.getQuestionsCount() + 1);
+            questions = dataService.getAllQuestions().subList(0, QuizData.getQuestionsCount() + 1);
         }
-        number = 0;
+        currentStep = 0;
         textArea.setDisable(false);
-        textArea.setText(questions.get(number).getDescription());
-        score.setText(number + "/" + (questions.size() - 1));
-        score.setVisible(QuizSettings.isProcessing());
-        time.setVisible(QuizSettings.isTiming());
+        textArea.setText(questions.get(currentStep).getDescription());
+        score.setText(currentStep + "/" + (questions.size() - 1));
+        score.setVisible(QuizData.isProcessing());
+        time.setVisible(QuizData.isTiming());
         showTime();
-        fillContainer(questions.get(number));
+        fillContainer(questions.get(currentStep));
     }
 
-    private void stepQuestion(boolean next) {
-        int temp = number;
+    private void changeStepQuestion(boolean next) {
+        int temp = currentStep;
         if (next && ++temp < questions.size()) {
-            textArea.setText(questions.get(++number).getDescription());
+            textArea.setText(questions.get(++currentStep).getDescription());
         } else if (!next && --temp >= 0) {
-            textArea.setText(questions.get(--number).getDescription());
+            textArea.setText(questions.get(--currentStep).getDescription());
         }
-        score.setText(number + "/" + (questions.size() - 1));
+        score.setText(currentStep + "/" + (questions.size() - 1));
     }
 
     private void fillContainer(Question question) {
         container.getChildren().clear();
         List<Answer> answers = question.getAnswers();
+        boolean saved = false;
+        if (savedAnswers.containsKey(currentStep)) {
+            answers = savedAnswers.get(currentStep);
+            saved = true;
+        }
         for (Answer answer : answers) {
             RadioButton radioButton = new RadioButton();
-            if (answer.getAnswer().length() > MAX_LENGHT) {
+            if (answer.getAnswer().length() > MAX_LENGTH) {
                 radioButton.setMinHeight(DOUBLE_ROW);
             } else {
                 radioButton.setMinHeight(ONE_ROW);
             }
             radioButton.setText(answer.getAnswer());
+            if (saved) {
+                radioButton.setSelected(answer.isCorrect());
+            }
             radioButton.wrapTextProperty().setValue(true);
             container.getChildren().add(radioButton);
         }
@@ -129,7 +160,7 @@ public class Test {
 
     private void showTime() {
         long startTime = System.currentTimeMillis();
-        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        DateFormat timeFormat = new SimpleDateFormat(TIME_FORMAT);
         timeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         timeline = new Timeline(
                 new KeyFrame(
@@ -141,19 +172,15 @@ public class Test {
         timeline.play();
     }
 
-    private void setAnswersToData() {
-        ObservableList<Node> answers = container.getChildren();
-        if (answers.isEmpty()) {
-            dataAnswers.put(number, Collections.emptyList());
-            return;
-        }
+    private void saveAnswers() {
+        ObservableList<Node> radioButtons = container.getChildren();
         ArrayList<Answer> newAnswers = new ArrayList<>();
-        for (Node answer : answers) {
+        for (Node radioButton : radioButtons) {
             Answer dataAnswer = new Answer();
-            dataAnswer.setAnswer(((RadioButton) answer).getText());
-            dataAnswer.setCorrect(((RadioButton) answer).isSelected());
+            dataAnswer.setAnswer(((RadioButton) radioButton).getText());
+            dataAnswer.setCorrect(((RadioButton) radioButton).isSelected());
             newAnswers.add(dataAnswer);
         }
-        dataAnswers.put(number, newAnswers);
+        savedAnswers.put(currentStep, newAnswers);
     }
 }
