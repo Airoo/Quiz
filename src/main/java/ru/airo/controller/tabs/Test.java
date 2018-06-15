@@ -3,8 +3,10 @@ package ru.airo.controller.tabs;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -18,14 +20,18 @@ import ru.airo.service.Loader;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 public class Test {
+    private static final int MAX_LENGHT = 120;
+    private static final int DOUBLE_ROW = 40;
+    private static final int ONE_ROW = 25;
+
     private Loader dataLoader = new Loader();
     private List<Question> questions;
     private int number = 0;
     private Timeline timeline;
+    private Map<Integer, List<Answer>> dataAnswers;
 
     @FXML
     private TextArea textArea;
@@ -53,6 +59,7 @@ public class Test {
     }
 
     public void startTest(ActionEvent actionEvent) {
+        dataAnswers = new HashMap<>();
         initButtons(true);
         initNewGame();
     }
@@ -67,15 +74,13 @@ public class Test {
     }
 
     public void backBtn(ActionEvent actionEvent) {
+        setAnswersToData();
         stepQuestion(false);
         fillContainer(questions.get(number));
     }
 
-    public void openBtn(ActionEvent actionEvent) {
-
-    }
-
     public void nextBtn(ActionEvent actionEvent) {
+        setAnswersToData();
         stepQuestion(true);
         fillContainer(questions.get(number));
     }
@@ -111,7 +116,13 @@ public class Test {
         List<Answer> answers = question.getAnswers();
         for (Answer answer : answers) {
             RadioButton radioButton = new RadioButton();
+            if (answer.getAnswer().length() > MAX_LENGHT) {
+                radioButton.setMinHeight(DOUBLE_ROW);
+            } else {
+                radioButton.setMinHeight(ONE_ROW);
+            }
             radioButton.setText(answer.getAnswer());
+            radioButton.wrapTextProperty().setValue(true);
             container.getChildren().add(radioButton);
         }
     }
@@ -128,5 +139,21 @@ public class Test {
         );
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+    }
+
+    private void setAnswersToData() {
+        ObservableList<Node> answers = container.getChildren();
+        if (answers.isEmpty()) {
+            dataAnswers.put(number, Collections.emptyList());
+            return;
+        }
+        ArrayList<Answer> newAnswers = new ArrayList<>();
+        for (Node answer : answers) {
+            Answer dataAnswer = new Answer();
+            dataAnswer.setAnswer(((RadioButton) answer).getText());
+            dataAnswer.setCorrect(((RadioButton) answer).isSelected());
+            newAnswers.add(dataAnswer);
+        }
+        dataAnswers.put(number, newAnswers);
     }
 }

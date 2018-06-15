@@ -210,7 +210,7 @@
   {
     "section": null,
     "number": "Вопрос № 9",
-    "description": "Пусть мы хотим определить аннотацию MyAnnotation с параметром, например @MyAnnotation(“this is my value”). Укажите корректный синтаксис для описания такого поля в аннотации.\n",
+    "description": "Пусть мы хотим определить аннотацию MyAnnotation с параметром, например @MyAnnotation(“this is my value”).\n Укажите корректный синтаксис для описания такого поля в аннотации.\n",
     "help": null,
     "type": "SINGLE",
     "answers": [
@@ -398,7 +398,7 @@
     "section": null,
     "number": "Вопрос № 5",
     "description": "Пусть есть такой код:\npublic class Test {\nstatic List<Integer> a = Arrays.asList(1,2,3,4,5);\npublic static void main(String args[]) {\nfor (int i=0;i<a.size();i++) {\nif (a.get(i)>1) a.remove(i);\n}\nSystem.out.println(a);\n}\n}\nКорректен ли такой код, удаляющий из коллекции все элементы, большие 1? \n",
-    "help": "Возникнет ошибка UnsupportedOperationException, так как Arrays.asList(..)  создает неизменяемый List\n-----\n",
+    "help": "Возникнет ошибка UnsupportedOperationException, так как Arrays.asList(..)  создает неизменяемый List\n",
     "type": "SINGLE",
     "answers": [
       {
@@ -502,7 +502,7 @@
     "section": null,
     "number": "Вопрос № 9",
     "description": "Какую структуру данных лучше использовать если необходимо, чтобы элементы были уникальными и были отсортированы?\n",
-    "help": "Уникальность обеспечивает Set, LinkedHashSet – запоминает порядок вставки\n\n----\n",
+    "help": "Уникальность обеспечивает Set, LinkedHashSet – запоминает порядок вставки\n",
     "type": "SINGLE",
     "answers": [
       {
@@ -552,10 +552,6 @@
       },
       {
         "answer": "\tДля более еффективной работы метода equals\n",
-        "correct": false
-      },
-      {
-        "answer": "---\n",
         "correct": false
       }
     ]
@@ -635,7 +631,7 @@
     "section": null,
     "number": "Вопрос № 2",
     "description": "Как изменить размер массива внутри метода m класса B?\nclass B {\npublic void m(int[] arg) { \n}\n}\nclass Tester {\npublic static void main(String[] args) {\nB b = new B();\nint a[] = new int[10];\nb.m(a);\n}\n}\n",
-    "help": "Размер массива изменить невозможно\n----\n",
+    "help": "Размер массива изменить невозможно\n",
     "type": "SINGLE",
     "answers": [
       {
@@ -659,7 +655,7 @@
   {
     "section": null,
     "number": "Вопрос № 3",
-    "description": "Пусть есть классы\nclass Car {\nint size;\nString color = “black”;\n\npublic Car(int size) {\nthis.size = size;\n}\n}\nи \nclass MiniCar extends Car { }\nКаким образом можно определить конструктор без параметров в классе MiniCar, если мы хотим, чтобы размер машины по умолчанию был 5, а цвет – красный (отметьте все возможные варианты)?\n",
+    "description": "Пусть есть классы\nclass Car {\nint size;\nString color = “black”;\n\npublic Car(int size) {\nthis.size = size;\n}\n}\nи \nclass MiniCar extends Car { }\nКаким образом можно определить конструктор без параметров в классе MiniCar, если мы хотим,\n чтобы размер машины по умолчанию был 5, а цвет – красный (отметьте все возможные варианты)?\n",
     "help": null,
     "type": "EMPTY",
     "answers": [
@@ -1163,7 +1159,7 @@
     "section": null,
     "number": "Вопрос № 2",
     "description": "Какое значение будет у переменной i после создания объекта?\npublic class A {\nprivate int i;\nstatic {\ni = 1;\n}\npublic A() {\ni = 2;\n}\n}\n",
-    "help": "Нестатическая переменная в статическом блоке\n----\n",
+    "help": "Нестатическая переменная в статическом блоке\n",
     "type": "SINGLE",
     "answers": [
       {
@@ -1536,7 +1532,7 @@
   {
     "section": null,
     "number": "Вопрос № 6",
-    "description": "Какой тип ссылок (XXX) в Java описывается следующим контрактом: «Когда Garbage Collector определяет, что объект доступен только через XXX-ссылку, то объект сразу удаляется из памяти»?\n",
+    "description": "Какой тип ссылок (XXX) в Java описывается следующим контрактом: «Когда Garbage Collector определяет,\n что объект доступен только через XXX-ссылку, то объект сразу удаляется из памяти»?\n",
     "help": "https://habrahabr.ru/post/169883/\n",
     "type": "SINGLE",
     "answers": [
@@ -1561,7 +1557,7 @@
   {
     "section": null,
     "number": "Вопрос № 7",
-    "description": "Для каких опций выполняется условие, что значение первого параметра должно быть меньше значения второго для корректной работы JVM?\n",
+    "description": "Для каких опций выполняется условие, что значение первого параметра должно быть\n меньше значения второго для корректной работы JVM?\n",
     "help": "Xmn – the size of heap for the young generation\nXms – initial minimum heap size\nXmx – maximum heap suze\nXss - thread stack size\n",
     "type": "SINGLE",
     "answers": [
@@ -1586,7 +1582,7 @@
   {
     "section": null,
     "number": "Вопрос № 8",
-    "description": "Какой из алгоритмов сборки мусора подходит под следующее описание: «Разработан специально для обработки больших куч в памяти (объемом больше 4 Гб) с минимальными паузами. Он разделяет пространство на большое количество мелких регионов»?\n",
+    "description": "Какой из алгоритмов сборки мусора подходит под следующее описание: «Разработан специально для\n обработки больших куч в памяти (объемом больше 4 Гб) с минимальными паузами.\n Он разделяет пространство на большое количество мелких регионов»?\n",
     "help": "Serial - GC  Последовательно выполняется minor GC и major GC. Эффективен на компьютерах с небольшим количеством (один/два) процессоров. Эффективен на компьютерах с большим количество виртуальных машин и запущенных JVM больше чем доступных процессоров\n\nParallel GC - несколько потоков по сборке young памяти, один поток для сборки old памяти\nнесколько потоков по сборке young и old памяти. Плюсы: Максимальная производительность. Минусы: Продолжительные паузы\nConcurrent Mark Sweep Collector - Несколько потоков по сборке мусора, сводит к минимуму перерывы из-за сборки мусора. Плюсы: Предсказуемость, Короткие паузы. Минусы: Снижение производительности.\nG1 - Сборка мусора в фоновом режиме, сводит к минимуму перерывы из-за сборки мусора. Плюсы: Предсказуемость, короткие паузы Подходит когда выделено очень много памяти (heap). Минусы: Снижение производительности. G1 рекомендуется, если (не обязательно все):\nНужна хорошая производительность\nПродолжительность пауз (<0.5-1s)\nМинимальная настройка\nРазмер «кучи» >5Gb\nЗанятость «кучи» >50%\nСкорость создания объектов серьезно варьируется\nФрагментация «кучи»\n",
     "type": "SINGLE",
     "answers": [
@@ -1738,17 +1734,13 @@
       {
         "answer": "\tВсе вышеперечисленные Generics\n",
         "correct": true
-      },
-      {
-        "answer": "---\n",
-        "correct": false
       }
     ]
   },
   {
     "section": null,
     "number": "Вопрос № 1",
-    "description": "Объявлены два интерфейса:\ninterface BI { }\ninterface DI extends BI { }\nСледующие опции содержат объявления шаблонного класса X. Какое из определений содержит корректное описание параметра типа, являющегося верхней границей DI допустимых значений?\n",
+    "description": "Объявлены два интерфейса:\ninterface BI { }\ninterface DI extends BI { }\nСледующие опции содержат объявления шаблонного класса X. Какое из определений содержит корректное описание параметра типа,\n являющегося верхней границей DI допустимых значений?\n",
     "help": null,
     "type": "EMPTY",
     "answers": [
@@ -1867,17 +1859,13 @@
       {
         "answer": "\tДобавляют стабильность в код за счет того, что большинство багов определяются на этапе компиляции\n",
         "correct": true
-      },
-      {
-        "answer": "---\n",
-        "correct": false
       }
     ]
   },
   {
     "section": null,
     "number": "Вопрос № 6",
-    "description": "Какие изменения необходимо внести в представленный класс, чтобы получить преимущества от использования Generics без изменения функциональности?\npublic class BookStore {\nMap map = new HashMap(); //1\npublic BookStore() {\nmap.put(new Book(\"A111\"), new Integer(10)); //2\n}\npublic int getNumberOfCopies(Book b) { //3\nInteger i = (Integer) map.get(b); //4\nreturn i == null ? 0 : i.intValue(); //5\n}\n}\n",
+    "description": "Какие изменения необходимо внести в представленный класс, чтобы получить преимущества от использования\n Generics без изменения функциональности?\npublic class BookStore {\nMap map = new HashMap(); //1\npublic BookStore() {\nmap.put(new Book(\"A111\"), new Integer(10)); //2\n}\npublic int getNumberOfCopies(Book b) { //3\nInteger i = (Integer) map.get(b); //4\nreturn i == null ? 0 : i.intValue(); //5\n}\n}\n",
     "help": null,
     "type": "EMPTY",
     "answers": [
@@ -1900,17 +1888,13 @@
       {
         "answer": "\tЗаменить строки //4 и //5 на return map.get(b);\n",
         "correct": false
-      },
-      {
-        "answer": "---\n",
-        "correct": false
       }
     ]
   },
   {
     "section": null,
     "number": "Вопрос № 7",
-    "description": "Какие из приведенных объявлений метода позволят скомпилироваться и выполниться без ошибок и предупреждений следующему фрагменту кода? Все конструкции, скрытые за знаком /* … */, являются корректными.\ninterface Sink<T> {\nflush(T t);\n}\nSink<Object> s = /* … */\nCollection<String> cs = /* … */\nString str = writeAll(cs, s);\n",
+    "description": "Какие из приведенных объявлений метода позволят скомпилироваться и выполниться без ошибок и предупреждений\n следующему фрагменту кода? Все конструкции, скрытые за знаком /* … */, являются корректными.\ninterface Sink<T> {\nflush(T t);\n}\nSink<Object> s = /* … */\nCollection<String> cs = /* … */\nString str = writeAll(cs, s);\n",
     "help": null,
     "type": "EMPTY",
     "answers": [
@@ -1954,10 +1938,6 @@
       {
         "answer": "\tCompilation Failed at //1\n",
         "correct": false
-      },
-      {
-        "answer": "---\n",
-        "correct": false
       }
     ]
   },
@@ -1981,7 +1961,7 @@
         "correct": false
       },
       {
-        "answer": "\tpublic void m6(ArrayList<Shape> strList){List<? extends Shape > list = new ArrayList<>();list.add(new Shape());strList.addAll(list);} Многопоточность\n",
+        "answer": "\tpublic void m6(ArrayList<Shape> strList){List<? extends Shape > list = new ArrayList<>();list.add(new Shape());strList.addAll(list);}\n",
         "correct": false
       }
     ]
@@ -2058,10 +2038,6 @@
       {
         "answer": "\tРезультат непредсказуем\n",
         "correct": true
-      },
-      {
-        "answer": "---\n",
-        "correct": false
       }
     ]
   },
@@ -2087,10 +2063,6 @@
       {
         "answer": "\tПосле того, как блокировка объекта b будет освобождена, или через 2 секунды\n",
         "correct": false
-      },
-      {
-        "answer": "---\n",
-        "correct": false
       }
     ]
   },
@@ -2115,10 +2087,6 @@
       },
       {
         "answer": "\tДа, является\n",
-        "correct": false
-      },
-      {
-        "answer": "---\n",
         "correct": false
       }
     ]
@@ -2178,10 +2146,6 @@
       {
         "answer": "\tРекомендуется использовать метод Thread.interrupt(), который приводит к прекращению работы потока\n",
         "correct": false
-      },
-      {
-        "answer": "---\n",
-        "correct": false
       }
     ]
   },
@@ -2206,10 +2170,6 @@
       },
       {
         "answer": "\tЗапись в поле volatile происходит-прежде каждого последующего чтения того же самого volatile\n",
-        "correct": false
-      },
-      {
-        "answer": "---\n",
         "correct": false
       }
     ]
@@ -2239,10 +2199,6 @@
       },
       {
         "answer": "\tПометить счетчик counter как volatile\tИспользовать переменную класса Integer в качестве счетчика\n",
-        "correct": false
-      },
-      {
-        "answer": "---\n",
         "correct": false
       }
     ]
@@ -2625,10 +2581,6 @@
       {
         "answer": "\tВозможно, если определить конструктор, принимающий дополнительную информацию как параметры\n",
         "correct": true
-      },
-      {
-        "answer": "---\n",
-        "correct": false
       }
     ]
   },
@@ -2661,7 +2613,7 @@
     "section": null,
     "number": "Вопрос № 1",
     "description": "Каков будет результат выполнения следующего фрагмента кода?\npublic class A implements Serializable {\ntransient int a = 7;\nstatic int b = 9;\n}\npublic class B implements Serializable {\npublic static void main(String[] args) {\nA a = new A();\ntry {\nObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(“test.ser”));\nos.writeObject(a);\nos.close();\nSystem.out.print(a.b + “ “);\n\nObjectInputStream is = new ObjectInputStream(new FileInputStream(“test.ser”));\nA s2 = (A) is.readObject();\nis.close();\nSystem.out.println(s2.a + “ “ + s2.b);\n} catch (Exception ex) {\nex.printStackTrace();\n}\n}\n}\n",
-    "help": "После десериализации так как a transient то значение будет по умолчанию 0\n----\n",
+    "help": "После десериализации так как a transient то значение будет по умолчанию 0\n",
     "type": "SINGLE",
     "answers": [
       {
