@@ -13,6 +13,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import ru.airo.controller.AlertView;
 import ru.airo.controller.data.QuizData;
 import ru.airo.model.Answer;
 import ru.airo.model.Question;
@@ -22,6 +23,7 @@ import ru.airo.service.DataService;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Test {
     private static final int MAX_LENGTH = 120;
@@ -100,6 +102,19 @@ public class Test {
         saveAnswers();
         changeStepQuestion(false);
         fillContainer(questions.get(currentStep));
+    }
+
+    public void openBtn(ActionEvent actionEvent) {
+        //TODO Костыль для вывода правильных ответов в консоль
+        List<String> correctAnswers = questions.get(currentStep).getAnswers().stream()
+                .filter(Answer::isCorrect)
+                .map(Answer::getAnswer)
+                .collect(Collectors.toList());
+        StringBuilder result = new StringBuilder();
+        for (String correctAnswer : correctAnswers) {
+            result.append(correctAnswer).append("\n");
+        }
+        new AlertView(result.toString());
     }
 
     public void nextBtn(ActionEvent actionEvent) {
