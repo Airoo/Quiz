@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
@@ -45,6 +46,7 @@ public class MainApp extends Application {
 
     private void initMenu(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Quiz");
+        primaryStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/img/logo.png")));
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/views/Main.fxml"));
         AnchorPane rootLayout = fxmlLoader.load();
         Scene scene = new Scene(rootLayout);
